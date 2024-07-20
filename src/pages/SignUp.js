@@ -70,7 +70,7 @@ const SignUp = () => {
       return;
     }
     // const url = `${process.env.BASE_URL}user/create`;
-    const url = 'http://localhost:5050/api/v1/user/create' // this url will be update
+    const url = 'https://groceyish-app-backend.onrender.com/api/v1/user/create' // this url will be update
     const sendUserData = {
       name:formData.firstname+' '+formData.lastname,
       email:formData.email,

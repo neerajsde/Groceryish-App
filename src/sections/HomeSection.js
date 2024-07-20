@@ -146,7 +146,7 @@ const HomeSection = () => {
   const subscribe = async (email_id) => {
     try{
       setIsLoading(true);
-      const url = 'http://localhost:5050/api/v1/subscribe';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/subscribe';
       const response = await fetch(url, {
           method: 'POST',
           headers: {

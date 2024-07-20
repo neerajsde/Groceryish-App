@@ -32,7 +32,7 @@ const Cart = () => {
   const fetchCartData = async () => {
     try {
       setIsLoading(true);
-      const url = 'http://localhost:5050/api/v1/cart';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/cart';
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -61,7 +61,7 @@ const Cart = () => {
 
   const updateQuantityIncrement = async (productId, index) => {
     try{
-      const url = 'http://localhost:5050/api/v1/product-count/increment';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/product-count/increment';
       const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -93,7 +93,7 @@ const Cart = () => {
   const changeSelectedProduct  = async (productId, index, item) => {
     try{
       setLoading(true);
-      const url = 'http://localhost:5050/api/v1/product-isSelected';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/product-isSelected';
       const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -132,7 +132,7 @@ const Cart = () => {
 
   const updateQuantityDerement = async (productId, index) => {
     try{
-      const url = 'http://localhost:5050/api/v1/product-count/derement';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/product-count/derement';
       const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -163,7 +163,7 @@ const Cart = () => {
 
   const getProductCount = async (productId, index) => {
     try{
-      const url = 'http://localhost:5050/api/v1/product-count';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/product-count';
       const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -201,7 +201,7 @@ const Cart = () => {
 
   const getSelectedProduct  = async (productId, index, item) => {
     try{
-      const url = 'http://localhost:5050/api/v1/product-isSelected/get';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/product-isSelected/get';
       const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -233,7 +233,7 @@ const Cart = () => {
 
   const deleteItem = async (productId) => {
     try{
-      const url = 'http://localhost:5050/api/v1/cart-item/delete';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/cart-item/delete';
       const response = await fetch(url, {
         method: 'DELETE',
         headers: {

@@ -81,7 +81,7 @@ function AppContextProvider({children}){
     const fetchProducts = async () => {
         try{
             setIsLoading(true);
-            const url = 'http://localhost:5050/api/v1/get-products';
+            const url = 'https://groceyish-app-backend.onrender.com/api/v1/get-products';
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {

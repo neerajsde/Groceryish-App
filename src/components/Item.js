@@ -18,7 +18,7 @@ const Item = ({ data, index }) => {
         }
 
         try {
-            const url = 'http://localhost:5050/api/v1/cart-item/add';
+            const url = 'https://groceyish-app-backend.onrender.com/api/v1/cart-item/add';
             const response = await fetch(url, {
                 method: 'PUT',
                 headers: {

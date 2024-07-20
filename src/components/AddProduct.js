@@ -125,7 +125,7 @@ const AddProduct = () => {
     
         try {
             setIsLoading(true);
-            const url = 'http://localhost:5050/api/v1/product/add';
+            const url = 'https://groceyish-app-backend.onrender.com/api/v1/product/add';
             const response = await fetch(url, {
                 method: 'POST',
                 body: formData

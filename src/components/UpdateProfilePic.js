@@ -20,7 +20,7 @@ const UpdateProfilePic = () => {
       formData.append('profilePic', selectedFile);
       formData.append('id', userData.user._id);
   
-      const url = 'http://localhost:5050/api/v1/profile-pic/update';
+      const url = 'https://groceyish-app-backend.onrender.com/api/v1/profile-pic/update';
   
       fetch(url, {
         method: 'PUT',

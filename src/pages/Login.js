@@ -48,7 +48,7 @@ const Login = () => {
       return;
     }
 
-    const url = 'http://localhost:5050/api/v1/login';
+    const url = 'https://groceyish-app-backend.onrender.com/api/v1/login';
     fetch_data(url, loginData)
   }
 
