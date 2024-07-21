@@ -17,6 +17,7 @@ const homeBanners = [
 ];
 
 const HomeSection = () => {
+  const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
   const {allProducts, fetchProducts, isLoggedIn, userData} = useContext(AppContext);
   const [currentBanner, setCurrentBanner] = useState(homeBanners[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -146,7 +147,7 @@ const HomeSection = () => {
   const subscribe = async (email_id) => {
     try{
       setIsLoading(true);
-      const url = 'https://groceyish-app-backend.onrender.com/api/v1/subscribe';
+      const url = `${baseUrl}/subscribe`;
       const response = await fetch(url, {
           method: 'POST',
           headers: {

@@ -2,8 +2,11 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { BiCartAdd } from "react-icons/bi";
+import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 
 const Item = ({ data, index }) => {
+    const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
     const { userData, isLoggedIn, setCartItem, isAddedToCart, setIsAddedToCart } = useContext(AppContext);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +21,7 @@ const Item = ({ data, index }) => {
         }
 
         try {
-            const url = 'https://groceyish-app-backend.onrender.com/api/v1/cart-item/add';
+            const url = `${baseUrl}/cart-item/add`;
             const response = await fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -52,7 +55,7 @@ const Item = ({ data, index }) => {
 
     return (
         <div className='w-full h-[250px] flex flex-col justify-center items-center gap-4 p-2 bg-white transition-all duration-300 hover:scale-105 border border-slate-500 rounded-md hover:shadow-2xl'>
-            <div className='w-full flex justify-between items-center'>
+            <div className='w-full flex justify-between items-center relative'>
                 <div className='flex flex-col pl-4'>
                     <div className='text-md uppercase text-gray-600 font-semibold'>{data.name}</div>
                     <div className='text-sm font-semibold text-gray-400'>{data.category}</div>
@@ -64,6 +67,9 @@ const Item = ({ data, index }) => {
                 </div>
                 <div className='w-[150px] h-[150px] flex items-center justify-center'>
                     <img src={data.img} className='w-full max-h-full' alt={data.title} />
+                </div>
+                <div className='absolute top-1 right-1 text-3xl w-[40px] h-[40px] rounded-full bg-[#6666] flex items-center justify-center cursor-pointer'>
+                    <FcLikePlaceholder/>
                 </div>
             </div>
             <div className='w-full flex justify-evenly items-center'>
@@ -79,7 +85,7 @@ const Item = ({ data, index }) => {
                             <button
                                 className='w-[170px] flex justify-evenly items-center border-2 border-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-slate-500 text-white transition duration-200 hover:bg-slate-600'
                                 onClick={() => handleAddToCart(data._id)}
-                            >Add to cart {isLoading && (<div className='btn-spinner'></div>)}</button>
+                            >Add to cart {isLoading ? (<div className='btn-spinner'></div>) : (<div className='text-xl'><BiCartAdd/></div>)}</button>
                         )
                 }
                 <button

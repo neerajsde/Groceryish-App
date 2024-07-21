@@ -6,6 +6,7 @@ import Spinner from '../components/Spinner';
 import toast from 'react-hot-toast';
 
 const UpdateProfilePic = () => {
+  const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
   const { userData, isLoading, setProfilePic, setUserData, setIsLoading, updateProfilePic, setUpdateProfilePic } = useContext(AppContext);
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -20,7 +21,7 @@ const UpdateProfilePic = () => {
       formData.append('profilePic', selectedFile);
       formData.append('id', userData.user._id);
   
-      const url = 'https://groceyish-app-backend.onrender.com/api/v1/profile-pic/update';
+      const url = `${baseUrl}/profile-pic/update`;
   
       fetch(url, {
         method: 'PUT',

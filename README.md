@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Groceyish
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Groceyish is a full-stack web application designed to enhance the grocery shopping experience. It offers a user-friendly interface for browsing and purchasing a wide range of grocery items, along with robust features for user account management, secure authentication, and customer support.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Usage](#usage)
+- [Contact](#contact)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User Authentication and Account Management**:
+  - Secure login with email/password and third-party services (Google, Apple, Facebook).
+  - Profile management for updating username, email, phone number, and password.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Product Catalog and Shopping Experience**:
+  - Category browsing for products like Vegetables, Fruits, Coffee & Teas, Beauty, and more.
+  - Featured products with highlighted deals and discounts.
+  - Shopping cart and wishlist functionalities.
 
-### `npm test`
+- **Promotions and Discounts**:
+  - Daily deals and significant savings on orders.
+  - Various discounted products available.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Customer Support and Policies**:
+  - Clear refund policy for damaged items.
+  - Free delivery for orders over $50.
+  - 24/7 support center for assistance.
 
-### `npm run build`
+- **Additional Functionalities**:
+  - Newsletter subscription for updates on deals and new products.
+  - Comprehensive contact information for support and inquiries.
+  - Essential links for About Us, Contact, Hot Deals, Promotions, Payment, and Privacy Policy.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Frontend**: HTML, CSS, JavaScript, React
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: OAuth (Google, Apple, Facebook)
+- **Deployment**: Vercel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contact
 
-### `npm run eject`
+For any inquiries or feedback, please contact:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Neeraj Prajapati  
+Email: neerajprajapatisde@gmail.com
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Visit the live application at [Groceyish App](https://groceryish-app.vercel.app).

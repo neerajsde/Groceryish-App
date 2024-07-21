@@ -12,6 +12,7 @@ import Logo from '../components/Logo';
 
 
 const Login = () => {
+  const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
   const {fetch_data, isLoading, emailError,setEmailError, passError,setPassError, error, setError} = useContext(AppContext);
   const [isVisiable, setIsVisiable] = useState(false);
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Login = () => {
       return;
     }
 
-    const url = 'https://groceyish-app-backend.onrender.com/api/v1/login';
+    const url = `${baseUrl}/login`;
     fetch_data(url, loginData)
   }
 

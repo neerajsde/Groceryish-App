@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const AppContext = createContext();
 
 function AppContextProvider({children}){
+    const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -81,7 +82,8 @@ function AppContextProvider({children}){
     const fetchProducts = async () => {
         try{
             setIsLoading(true);
-            const url = 'https://groceyish-app-backend.onrender.com/api/v1/get-products';
+            const url = `${baseUrl}/get-products`;
+            console.log(url);
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
