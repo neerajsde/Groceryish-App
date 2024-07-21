@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
-    const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
+    const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
     const { setIsSellProduct, isLoading,setIsLoading, userData, setCartItem, cartData, setCartData } = useContext(AppContext);
     const [isActiveAddtoCartBtn, setIsActiveAddtoCartBtn] = useState(false);
     const [isActiveSendMail, setIsActiveSendMail] = useState(true);

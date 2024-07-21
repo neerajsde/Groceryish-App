@@ -6,7 +6,7 @@ import Spinner from '../components/Spinner';
 import toast from 'react-hot-toast';
 
 const UpdateProfilePic = () => {
-  const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
+  const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
   const { userData, isLoading, setProfilePic, setUserData, setIsLoading, updateProfilePic, setUpdateProfilePic } = useContext(AppContext);
   const [selectedFile, setSelectedFile] = useState(null);
 

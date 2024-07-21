@@ -6,7 +6,7 @@ import { BiCartAdd } from "react-icons/bi";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 
 const Item = ({ data, index }) => {
-    const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
+    const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
     const { userData, isLoggedIn, setCartItem, isAddedToCart, setIsAddedToCart } = useContext(AppContext);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);

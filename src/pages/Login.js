@@ -12,7 +12,7 @@ import Logo from '../components/Logo';
 
 
 const Login = () => {
-  const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
+  const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
   const {fetch_data, isLoading, emailError,setEmailError, passError,setPassError, error, setError} = useContext(AppContext);
   const [isVisiable, setIsVisiable] = useState(false);
   const navigate = useNavigate();

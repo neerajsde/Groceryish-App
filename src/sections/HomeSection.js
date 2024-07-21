@@ -17,7 +17,7 @@ const homeBanners = [
 ];
 
 const HomeSection = () => {
-  const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
+  const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
   const {allProducts, fetchProducts, isLoggedIn, userData} = useContext(AppContext);
   const [currentBanner, setCurrentBanner] = useState(homeBanners[0]);
   const [currentIndex, setCurrentIndex] = useState(0);

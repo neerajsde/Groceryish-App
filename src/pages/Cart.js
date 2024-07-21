@@ -8,7 +8,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
+  const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
   const { userData, setIsLoading, isLoggedIn, setCartItem, cartData, setCartData, isUserInfoActive } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [isSelectAll, setIsSelectAll] = useState(false);

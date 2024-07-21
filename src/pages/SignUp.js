@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 
 const SignUp = () => {
-  const baseUrl = process.env.BASE_URL || 'http://localhost:5050/api/v1';
+  const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
   const {fetch_data, isLoading, emailError,setEmailError, passError, setPassError, error, setError} = useContext(AppContext);
   const navigate = useNavigate();
   const [isPassVisiable, setIsPassVisiable] = useState(false);
