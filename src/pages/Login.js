@@ -8,7 +8,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { MdClose } from "react-icons/md";
 import toast from 'react-hot-toast';
-import Logo from '../components/Logo';
+import Navbar from '../components/Navbar';
 
 
 const Login = () => {
@@ -63,15 +63,7 @@ const Login = () => {
 
   return (
     <div className='w-screen h-screen flex flex-col justify-center login'>
-      <div className='w-full h-[80px] flex justify-between items-center px-4'>
-          <Logo/>
-
-          <div 
-            className='text-base uppercase font-medium text-slate-700 cursor-pointer hover:underline'
-            onClick={() => navigate('/signup')}>
-            create account
-          </div>
-      </div>
+      <Navbar/>
 
       <div className='w-full h-full flex flex-col justify-center items-center gap-4'>
         <div className='w-full text-center text-2xl font-semibold'>
@@ -173,11 +165,12 @@ const Login = () => {
           </div>
         </div>
 
-        <div 
-          className='text-base font-semibold uppercase text-slate-600 cursor-pointer hover:underline'
-          onClick={() => navigate('/')}
-        >
-          can't log in?
+        <div className='flex items-center gap-2'>
+          <div className='text-md text-gray-500 font-medium'>Do you have no account - </div>
+          <div 
+            className='text-base uppercase font-medium text-slate-700 cursor-pointer hover:underline'
+            onClick={() => navigate('/signup')}
+          >register here</div>
         </div>
 
         <div className='w-full flex flex-col justify-center items-center text-gray-500'>
