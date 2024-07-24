@@ -32,7 +32,35 @@ const HomeSection = () => {
   const [isVisiableRightArrow, setIsVisiableRightArrow] = useState(true);
   const [currentCategory, setCurrentCategory] = useState('All');
 
-  const maxCategory = 6;
+  // Function to determine maxCategory based on width
+  const getMaxCategory = (width) => {
+    if (width < 425) {
+      return 1;
+    }else if (width > 425 && width < 500) {
+      return 2;
+    } else if (width < 768) {
+      return 3;
+    } else {
+      return 6;
+    }
+  };
+  const [width, setWidth] = useState(window.innerWidth);
+  const [maxCategory, setMaxCategory] = useState(getMaxCategory(window.outerWidth));
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.outerWidth;
+      setWidth(newWidth);
+      setMaxCategory(getMaxCategory(newWidth));
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,7 +84,7 @@ const HomeSection = () => {
   }, []);
 
   useEffect(() => {
-    setcategoryItems(shuffleArray([...allProducts]));
+    setcategoryItems(allProducts);
     categoryHandler('All');
   },[allProducts])
 
@@ -203,23 +231,23 @@ const HomeSection = () => {
   
 
   return (
-    <div className='w-full min-h-[550px] relative'>
+    <div className='w-full relative'>
       {currentBanner}
         
         <div className='absolute top-0 right-0 w-full flex flex-col items-center justify-center'>
 
-          <div className='w-full flex items-center justify-evenly'>
-            <div className='flex flex-col gap-6'>
+          <div className='w-full flex items-center justify-evenly max-lg:justify-center max-md:flex-col'>
+            <div className='flex flex-col gap-6 max-lg:gap-4 max-md:gap-2'>
               {
                 isLoggedIn && (
-                  <div className='flex flex-col'>
+                  <div className='flex flex-col max-md:hidden'>
                     <div className='text-lg text-gray-500 font-semibold'>Welcome 👋</div>
                     <div className='text-2xl text-black font-bold capitalize'>{userData.user.name}</div>
                   </div>
                 )
               }
-              <h2 className='text-5xl font-bold text-slate-700'>Don't miss our daily <br/>amazing deals.</h2>
-              <p className='text-xl font-semibold text-gray-500'>Save upto 60% off on your first order</p>
+              <h2 className='text-5xl font-bold text-slate-700 max-lg:text-3xl'>Don't miss our daily <br/>amazing deals.</h2>
+              <p className='text-xl font-semibold text-gray-500 max-lg:text-base'>Save upto 60% off on your first order</p>
               <div className='w-full flex items-center justify-between relative'>
                 <input
                   type='email'
@@ -227,20 +255,22 @@ const HomeSection = () => {
                   placeholder={isLoggedIn ? 'Enter your another email address':'Enter your email address'}
                   value={userEmail}
                   onChange={emailHandler}
-                  className='w-full text-lg font-medium pl-10 px-2 py-2 outline-none border-none'
+                  className='w-full text-lg font-medium pl-10 px-2 py-2 outline-none border-none max-lg:text-base max-lg:pl-7 max-lg:rounded'
                 />
-                <button className='text-lg font-semibold text-white bg-green-600 py-2 px-4 outline-none border-none flex items-center gap-2' onClick={() => subscribe(userEmail)}>Subscribe {isLoading && (<Spinner/>)}</button>
-                <div className='absolute top-4 left-3 text-gray-500 text-md'><SlPaperPlane/></div>
+                <button className='text-lg font-semibold text-white bg-green-600 py-2 px-4 outline-none border-none flex items-center gap-2 max-lg:text-base max-lg:hidden' onClick={() => subscribe(userEmail)}>Subscribe {isLoading && (<Spinner/>)}</button>
+                <div className='absolute top-4 left-3 text-gray-500 text-md max-lg:text-sm max-lg:left-2 max-lg:top-4'><SlPaperPlane/></div>
               </div>
+              <button className='w-[150px] text-lg font-semibold rounded-sm text-white bg-green-600 py-2 px-4 outline-none border-none flex items-center justify-center gap-2 lg:hidden max-lg:text-base' onClick={() => subscribe(userEmail)}>Subscribe {isLoading && (<Spinner/>)}</button>
             </div>
+
             <img 
               src='https://res.cloudinary.com/do1xweis7/image/upload/v1721280453/fruits_banner_hq3qfx.png' 
               alt=''
-                className='w-[600px]'
+                className='w-[600px] max-lg:w-[400px] max-md:hidden'
             />
           </div>
 
-          <div className='w-full flex items-center justify-center gap-2 mt-[-20px]'>
+          <div className='w-full flex items-center justify-center gap-2 mt-[-20px] max-md:mt-7'>
             {
               homeBanners.map((item, index) => {
                 return (

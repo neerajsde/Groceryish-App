@@ -57,8 +57,9 @@ const Item = ({ data, index }) => {
         <div className='w-full h-[250px] flex flex-col justify-center items-center gap-4 p-2 bg-white transition-all duration-300 hover:scale-105 border border-slate-500 rounded-md hover:shadow-2xl'>
             <div className='w-full flex justify-between items-center relative'>
                 <div className='flex flex-col pl-4'>
-                    <div className='text-md uppercase text-gray-600 font-semibold'>{data.name}</div>
                     <div className='text-sm font-semibold text-gray-400'>{data.category}</div>
+                    <div className='text-lg text-gray-700 font-semibold'>{data.name}</div>
+                    <div className='text-xs text-gray-400 font-semibold'>By <span className='text-green-500'>{data.username}</span></div>
                     <div className='flex gap-2'>
                         <p className='text-md font-semibold text-red-600'>Price: </p>
                         <div className='text-md font-semibold'>{`₹${data.price}`}</div>

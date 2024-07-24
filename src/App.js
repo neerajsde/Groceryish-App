@@ -12,7 +12,7 @@ import AddProduct from './components/AddProduct'
 const App = () => {
   const {isSellProduct} = useContext(AppContext);
   return (
-    <div className='min-w-screen min-h-screen relative'>
+    <div className='w-screen h-screen relative overflow-x-hidden'>
       <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}/>

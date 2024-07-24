@@ -10,7 +10,7 @@ const UserInfo = () => {
   const {setIsLoggedIn, setUserData, setIsUserInfoActive, setIsSellProduct} = useContext(AppContext);
   const navigate = useNavigate();
   return (
-    <div className='w-[300px] bg-white rounded-sm flex justify-center items-center shadow-lg'
+    <div className='w-[300px] border border-black bg-white rounded-sm flex justify-center items-center shadow-lg max-lg:mt-[3rem]'
       onMouseEnter={() =>  setIsUserInfoActive(true)}
       onMouseLeave={() =>  setIsUserInfoActive(false)}
     >

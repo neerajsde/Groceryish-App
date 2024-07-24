@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import { AppContext } from '../context/AppContext'
-import Products from '../components/Products';
 import HomeSection from '../sections/HomeSection';
 import Hot_DealsSection from '../sections/Hot_DealsSection';
 import Permotions from '../sections/Permotions';
 import NewProducts from '../sections/NewProducts';
 import Footer from '../components/Footer';
 import { IoMdCloseCircle } from "react-icons/io";
+import SearchBar from '../components/SearchBar';
 
 const Home = () => {
   const {isUserInfoActive, menuItemsDetector} = useContext(AppContext);
@@ -19,9 +19,10 @@ const Home = () => {
   return (
     <div className='w-full flex flex-col bg-white relative'>
       <Navbar/>
-      <Header/>
+      <SearchBar/>
 
       <div className='w-full min-h-screen relative'>
+        <Header/>
         {
           menuItemsDetector[0] && (<HomeSection/>)
         }
