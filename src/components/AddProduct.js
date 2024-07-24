@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { IoClose } from "react-icons/io5";
 import { IoMdCloudUpload } from "react-icons/io";
 import { AppContext } from '../context/AppContext';
