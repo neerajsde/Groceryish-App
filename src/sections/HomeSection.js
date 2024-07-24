@@ -224,20 +224,28 @@ const HomeSection = () => {
 
   const getClassNames = (product) => {
     if (currentCategory === product) {
-      return 'text-green-600 bold';
+      return 'text-green-600 bold border-b-2 border-b-green-500';
     }
-    return 'text-gray-400 hover:text-black';
+    return 'text-gray-400 hover:text-black border-b-2 border-b-transparent';
   };
   
 
   return (
     <div className='w-full relative'>
-      {currentBanner}
+        <div className='max-md:hidden'>{currentBanner}</div>
+        <div className='md:hidden w-full min-h-screen bg-green-300 flex justify-center items-end relative'>
+            <img 
+              src='https://res.cloudinary.com/do1xweis7/image/upload/v1721280453/fruits_banner_hq3qfx.png' 
+              alt=''
+                className='w-[400px]'
+            />
+            <div className='w-full min-h-screen absolute top-0 left-0 bg-[#1111112c]'></div>
+        </div>
         
-        <div className='absolute top-0 right-0 w-full flex flex-col items-center justify-center'>
+        <div className='absolute top-0 right-0 w-full flex flex-col items-center justify-center max-md:top-5'>
 
           <div className='w-full flex items-center justify-evenly max-lg:justify-center max-md:flex-col'>
-            <div className='flex flex-col gap-6 max-lg:gap-4 max-md:gap-2'>
+            <div className='flex flex-col gap-6 max-lg:gap-4 max-md:gap-5'>
               {
                 isLoggedIn && (
                   <div className='flex flex-col max-md:hidden'>
@@ -270,11 +278,11 @@ const HomeSection = () => {
             />
           </div>
 
-          <div className='w-full flex items-center justify-center gap-2 mt-[-20px] max-md:mt-7'>
+          <div className='w-full flex items-center justify-center gap-2 mt-[-20px] max-md:hidden'>
             {
               homeBanners.map((item, index) => {
                 return (
-                  <div key={index} className={`w-[12px] h-[12px] border-[1.5px] border-white rounded-full cursor-pointer ${index === currentIndex ? 'bg-green-600 border-green-600' : 'border-white bg-transparent'}`}></div>
+                  <div key={index} className={`w-[12px] h-[12px] border-[1.5px] border-black rounded-full cursor-pointer ${index === currentIndex ? 'bg-green-600 border-white-600' : 'border-black bg-transparent'}`}></div>
                 )
               })
             }
@@ -283,9 +291,9 @@ const HomeSection = () => {
 
 
         <div className='w-full flex flex-col items-center py-8 gap-8'>
-            <div className='w-full flex items-center justify-between px-8'>
-              <h2 className='text-3xl font-bold text-slate-600'>Explore Categories</h2>
-              <div className='flex items-center gap-6'>
+            <div className='w-full flex items-center justify-between px-8 max-md:px-4 max-md:flex-col max-md:gap-4'>
+              <h2 className='text-3xl font-bold text-slate-600 max-lg:text-2xl max-md:text-xl'>Explore Categories</h2>
+              <div className='flex items-center gap-6 max-md:flex-wrap max-md:gap-y-1 max-sm:gap-3 max-md:justify-between'>
                 {
                   uniqueCategory.map((product, index) => {
                   return (
@@ -303,7 +311,7 @@ const HomeSection = () => {
             </div>
 
             <div className='w-full flex items-center justify-between px-4'>
-              <div className={`text-3xl bg-gray-200 py-4 px-2 ${isVisiableLeftArrow ? 'cursor-pointer text-black' : ' cursor-not-allowed text-white'}`} onClick={handleLeftMoveItems}><FaChevronLeft/></div>
+              <div className={`text-3xl bg-gray-200 py-4 px-2 max-md:text-xl ${isVisiableLeftArrow ? 'cursor-pointer text-black' : ' cursor-not-allowed text-white'}`} onClick={handleLeftMoveItems}><FaChevronLeft/></div>
 
               <div className='flex items-center gap-4'>
                 {
@@ -323,7 +331,7 @@ const HomeSection = () => {
                 }
               </div>
 
-              <div className={`text-3xl bg-gray-200 py-4 px-2 cursor-pointer ${isVisiableRightArrow ? 'cursor-pointer text-black' : ' cursor-not-allowed text-white'}`} onClick={handleRightMoveItems}><FaChevronRight/></div>
+              <div className={`text-3xl bg-gray-200 py-4 px-2 max-md:text-xl cursor-pointer ${isVisiableRightArrow ? 'cursor-pointer text-black' : ' cursor-not-allowed text-white'}`} onClick={handleRightMoveItems}><FaChevronRight/></div>
             </div>
         </div>
 

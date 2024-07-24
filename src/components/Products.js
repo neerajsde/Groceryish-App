@@ -14,13 +14,13 @@ const Products = ({visiable_products}) => {
     }, [allProducts]);
 
   return (
-    <div className='w-full flex justify-start items-center px-8 py-4'>
+    <div className='w-full flex justify-start items-center px-8 py-4 max-sm:px-4'>
         {
             isLoading ? 
             (<Spinner/>)
             : 
             (
-                <div className='w-full grid grid-cols-3 justify-center items-center gap-4'>
+                <div className='w-full grid grid-cols-3 justify-center items-center gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1'>
                     {  
                         allProducts.length === 0 ? 
                         (<h2>No Item Is There</h2>) : 

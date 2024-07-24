@@ -54,17 +54,17 @@ const Item = ({ data, index }) => {
     }
 
     return (
-        <div className='w-full h-[250px] flex flex-col justify-center items-center gap-4 p-2 bg-white transition-all duration-300 hover:scale-105 border border-slate-500 rounded-md hover:shadow-2xl'>
+        <div className='w-full flex flex-col justify-center items-center gap-4 p-2 bg-white transition-all duration-300 hover:scale-105 border border-slate-500 rounded-md hover:shadow-2xl max-lg:gap-0'>
             <div className='w-full flex justify-between items-center relative'>
-                <div className='flex flex-col pl-4'>
-                    <div className='text-sm font-semibold text-gray-400'>{data.category}</div>
-                    <div className='text-lg text-gray-700 font-semibold'>{data.name}</div>
+                <div className='flex flex-col pl-4 max-sm:pl-1'>
+                    <div className='text-sm font-semibold text-gray-400 max-md:text-xs'>{data.category}</div>
+                    <div className='text-lg text-gray-700 font-semibold max-md:text-base'>{data.name}</div>
                     <div className='text-xs text-gray-400 font-semibold'>By <span className='text-green-500'>{data.username}</span></div>
                     <div className='flex gap-2'>
                         <p className='text-md font-semibold text-red-600'>Price: </p>
                         <div className='text-md font-semibold'>{`₹${data.price}`}</div>
                     </div>
-                    <div className='text-green-500'>{`${data.offer}% off`}</div>
+                    <div className='text-green-500 text-sm'>{`${data.offer}% off`}</div>
                 </div>
                 <div className='w-[150px] h-[150px] flex items-center justify-center'>
                     <img src={data.img} className='w-full max-h-full' alt={data.title} />
@@ -73,24 +73,24 @@ const Item = ({ data, index }) => {
                     <FcLikePlaceholder/>
                 </div>
             </div>
-            <div className='w-full flex justify-evenly items-center'>
+            <div className='w-full flex justify-evenly items-center max-lg:flex-col max-lg:gap-2'>
                 {
                     isAddedToCart[index] ?
                         (
                             <button
-                                className='w-[170px] flex justify-evenly items-center border-2 border-slate-600 text-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-white transition duration-200 hover:bg-slate-600 hover:text-white'
+                                className='w-[170px] flex justify-evenly items-center border-2 border-slate-600 text-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-white transition duration-200 hover:bg-slate-600 hover:text-white max-lg:w-full'
                                 onClick={() => navigate('/cart')}
                             >Go to cart {isLoading && (<div className='btn-spinner'></div>)}</button>
                         ) :
                         (
                             <button
-                                className='w-[170px] flex justify-evenly items-center border-2 border-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-slate-500 text-white transition duration-200 hover:bg-slate-600'
+                                className='w-[170px] flex justify-evenly items-center border-2 border-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-slate-500 text-white transition duration-200 hover:bg-slate-600 hover:text-white max-lg:w-full'
                                 onClick={() => handleAddToCart(data._id)}
                             >Add to cart {isLoading ? (<div className='btn-spinner'></div>) : (<div className='text-xl'><BiCartAdd/></div>)}</button>
                         )
                 }
                 <button
-                    className='w-[150px] border-2 border-orange-600 py-1 rounded-md uppercase text-md font-semibold bg-orange-500 text-white transition duration-200 hover:bg-orange-600'
+                    className='w-[150px] border-2 border-orange-600 py-1 rounded-md uppercase text-md font-semibold bg-orange-500 text-white transition duration-200 hover:bg-orange-600 max-lg:w-full'
                 >Buy Now</button>
             </div>
         </div>

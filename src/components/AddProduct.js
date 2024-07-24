@@ -41,6 +41,10 @@ const AddProduct = () => {
         }));
     }
 
+    useEffect(() => {
+        document.title = 'Upload a product';
+    },[]);
+
     const product_category = ['Vegitables','Fruits', 'Coffe & teas','Baby', 'Beauty', 'Gift Cards', 'Toys & Gaming'];
 
     const handleImageUpload = (event) => {

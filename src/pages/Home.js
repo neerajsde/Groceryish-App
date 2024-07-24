@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import { AppContext } from '../context/AppContext'
@@ -11,10 +11,11 @@ import { IoMdCloseCircle } from "react-icons/io";
 import SearchBar from '../components/SearchBar';
 
 const Home = () => {
-  const {isUserInfoActive, menuItemsDetector} = useContext(AppContext);
+  const {isUserInfoActive, menuItemsDetector, isAddInfo, setIsAddInfo} = useContext(AppContext);
 
-  // I want to show My additional info
-  const [isAddInfo, setIsAddInfo] = useState(true);
+  useEffect(() => {
+    document.title = 'Groceyish - Home';
+  },[]);
 
   return (
     <div className='w-full flex flex-col bg-white relative'>

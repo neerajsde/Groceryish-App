@@ -23,6 +23,9 @@ function AppContextProvider({children}){
     const [isAddedToCart, setIsAddedToCart] = useState([]);
     const [menuItemsDetector, setMenuItemsDetector] = useState([true, false, false, false]);
 
+    // I want to show My additional info
+    const [isAddInfo, setIsAddInfo] = useState(true);
+
     const fetch_data = async (url, sendData) => {
         try{
             setIsLoading(true);
@@ -121,7 +124,9 @@ function AppContextProvider({children}){
         allProducts, setAllProducts, 
         isAddedToCart, setIsAddedToCart, 
         menuItemsDetector, setMenuItemsDetector,
-        fetchProducts
+        fetchProducts,
+        // I will remove when this is completed
+        isAddInfo, setIsAddInfo
     }
 
     return (
