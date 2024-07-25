@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { SlPaperPlane } from "react-icons/sl";
-import Spinner from '../components/WhiteSpinner';
-import { AppContext } from '../context/AppContext';
+import Spinner from '../Spinner';
+import { AppContext } from '../../context/AppContext';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import Featued_Products from './Featued_Products';
 

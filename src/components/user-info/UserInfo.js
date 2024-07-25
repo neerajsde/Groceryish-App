@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import toast from 'react-hot-toast';
 import { FaUserEdit } from "react-icons/fa";
 import { MdLogout, MdSwitchAccount } from "react-icons/md";
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { IoMdAddCircleOutline } from "react-icons/io";
 

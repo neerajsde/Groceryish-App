@@ -8,7 +8,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { MdClose } from "react-icons/md";
 import toast from 'react-hot-toast';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/sections/navbar/Navbar';
 
 
 const Login = () => {

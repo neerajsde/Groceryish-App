@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import Search from './Search'
-import ShowUserName from './ShowUserName'
-import { AppContext } from '../context/AppContext'
-import Location from './Location'
+import ShowUserName from '../user-info/ShowUserName'
+import { AppContext } from '../../context/AppContext'
+import Location from '../sections/navbar/Location'
 
 const SearchBar = () => {
     const {isLoggedIn} = useContext(AppContext);

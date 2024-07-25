@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import Header from '../components/Header';
+import Navbar from '../components/sections/navbar/Navbar';
 import { AppContext } from '../context/AppContext';
 import toast from 'react-hot-toast';
 import { TiArrowSortedDown, TiTick } from "react-icons/ti";

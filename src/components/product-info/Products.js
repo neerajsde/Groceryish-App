@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
-import { AppContext } from '../context/AppContext'
-import Spinner from '../components/Spinner';
+import { AppContext } from '../../context/AppContext'
+import Spinner from '../Spinner';
 import Item from './Item';
 
 const Products = ({visiable_products}) => {

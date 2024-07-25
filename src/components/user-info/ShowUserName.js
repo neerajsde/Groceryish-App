@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
 const ShowUserName = () => {

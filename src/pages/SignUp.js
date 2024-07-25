@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AppContext } from '../context/AppContext';
-import Spinner from '../components/Spinner';
+import WhiteSpinner from '../components/Spinner';
 import { MdClose } from "react-icons/md";
 import toast from 'react-hot-toast';
+import Navbar from '../components/sections/navbar/Navbar';
 
 
 const SignUp = () => {
@@ -102,17 +103,18 @@ const SignUp = () => {
 
 
   return (
-    <div className='w-full h-full flex justify-center items-center bg-gray-400 signup-text py-8'>
-      <div className='w-[90%] relative max-md:h-screen'>
+    <div className='w-full flex flex-col items-center bg-gray-400 signup-text'>
+      <Navbar/>
+      <div className='w-[95%] relative max-lg:h-screen m-4'>
         <img src='https://res.cloudinary.com/do1xweis7/image/upload/v1717340580/signup-page_xtxyfo.jpg'
           className='w-full h-full rounded-lg'
         />
         
         <div className='w-full h-full absolute top-0 left-0 text-white bg-gray-600 opacity-30 backdrop-blur-xl rounded-lg z-2'></div>
 
-        <div className='w-full h-full max-md:h-screen flex flex-col items-center absolute top-0 left-0 text-white backdrop-blur-xl rounded-lg z-5 p-4 gap-4 max-md:overflow-y-scroll'>
+        <div className='w-full h-full max-md:h-screen flex flex-col items-center justify-center absolute top-0 left-0 text-white backdrop-blur-xl rounded-lg z-5 p-4 gap-4 max-lg:overflow-y-scroll max-lg:justify-start'>
           <div className='w-full flex flex-col justify-center items-center'>
-            <h2 className='text-3xl text-gray-100 font-bold'>Create a new account<span className='text-blue-600 text-5xl'>.</span></h2>
+            <h2 className='text-3xl text-gray-100 font-bold max-sm:text-2xl'>Create a new account<span className='text-blue-600 text-5xl'>.</span></h2>
             <p className='text-gray-400 text-base'>
               Already a member? 
               <button className='text-blue-600 text-lg font-semibold px-4 hover:underline'
@@ -126,7 +128,7 @@ const SignUp = () => {
           <div className='w-full flex flex-wrap justify-center gap-x-8 gap-y-4'>
             <div className='w-full max-w-[400px] flex flex-col'>
               <label className='pl-1 text-gray-400 font-semibold'>Name<sup className='text-red-500'>*</sup></label>
-              <div className='flex justify-between items-center gap-4'>
+              <div className='flex justify-between items-center gap-4 max-sm:flex-col max-sm:gap-1'>
                 <input
                   type='text'
                   name='firstname'
@@ -310,29 +312,27 @@ const SignUp = () => {
             </div>
           </div>
 
-          <div className='w-full h-[60px] flex justify-center items-center'>
-            {
-              error !== '' &&
-              (
-                <div className='w-full flex justify-between items-center max-w-[75%] text-red-500 text-left font-semibold text-lg border-2 border-blue-500 bg-red-100 py-2 px-5 rounded-md mt-4'>
-                  {error}
-                  <div 
-                    className='text-xl cursor-pointer'
-                    onClick={() => setError('')}
-                  >
-                    <MdClose/>
-                  </div>
+          {
+            error !== '' &&
+            (
+              <div className='w-[71%] h-[60px] flex justify-between items-center text-red-500 text-left font-semibold text-lg border-2 border-blue-500 bg-red-100 py-2 px-5 rounded-md mt-4 max-md:w-[80%] max-sm:w-[95%] max-md:text-sm'>
+                {error}
+                <div 
+                  className='text-xl cursor-pointer max-sm:text-base'
+                  onClick={() => setError('')}
+                >
+                  <MdClose/>
                 </div>
+              </div>
 
-              )
-            }
-          </div>
+            )
+          }
 
 
           <button 
             className='w-full max-w-[400px] flex justify-center items-center gap-4 border-2 py-2 border-orange-800 bg-orange-600 text-xl font-semibold uppercase rounded-lg text-gray-400 transition duration-300 ease-in hover:text-white hover:border-orange-900 mt-4'
             onClick={registerHandler}
-          >Register here {isLoading && (<Spinner/>)}</button>
+          >Register here {isLoading && (<WhiteSpinner/>)}</button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { AppContext } from '../context/AppContext'
+import { AppContext } from '../../context/AppContext'
 import { MdSaveAs } from "react-icons/md";
-import Spinner2 from './Spinner2';
+import Spinner2 from '../Spinner';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const UpdateUser = () => {

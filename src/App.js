@@ -7,7 +7,8 @@ import { Toaster } from 'react-hot-toast'
 import UserAccount from './pages/UserAccount'
 import Cart from './pages/Cart'
 import { AppContext } from './context/AppContext'
-import AddProduct from './components/AddProduct'
+import AddProduct from './components/product-info/AddProduct'
+import Wishlist from './pages/Wishlist'
 
 const App = () => {
   const {isSellProduct} = useContext(AppContext);
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/user-account' element={<UserAccount/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/wishlist' element={<Wishlist/>}/>
       </Routes>
 
       {

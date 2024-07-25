@@ -7,7 +7,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { WiTime9 } from "react-icons/wi";
 import { FaRegCopyright, FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter } from "react-icons/fa";
 
-import Logo from './Logo';
+import Logo from '../Logo';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {

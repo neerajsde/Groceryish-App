@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { FiMapPin } from "react-icons/fi";
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../../context/AppContext';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Location = () => {
-    const {isLoggedIn} = useContext(AppContext);
-    const [city, setCity] = useState('');
-    const [area, setArea] = useState('');
+    const {isLoggedIn, city, setCity, area, setArea} = useContext(AppContext);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -44,6 +42,7 @@ const Location = () => {
             setError('Geolocation is not supported by this browser.');
         }
     }, []);
+    
   return (
     <div className={`flex items-end gap-1 ${!isLoggedIn && 'max-sm:w-[90vw] max-sm:items-center'}`}>
         <div className='pb-1'><FiMapPin className='text-2xl text-gray-500 max-sm:text-xl'/></div>

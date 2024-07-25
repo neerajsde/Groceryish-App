@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { AppContext } from '../context/AppContext';
-import Products from '../components/Products';
+import { AppContext } from '../../context/AppContext';
+import Products from '../product-info/Products';
 
 const Featued_Products = () => {
     const {allProducts} = useContext(AppContext);

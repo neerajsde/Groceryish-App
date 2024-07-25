@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { IoMdClose, IoIosSave } from "react-icons/io";
-import Logo from './Logo';
-import { AppContext } from '../context/AppContext';
-import Spinner from '../components/Spinner';
+import Logo from '../Logo';
+import { AppContext } from '../../context/AppContext';
+import Spinner from '../Spinner';
 import toast from 'react-hot-toast';
 
 const UpdateProfilePic = () => {

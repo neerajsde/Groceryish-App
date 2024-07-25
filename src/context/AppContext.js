@@ -22,6 +22,9 @@ function AppContextProvider({children}){
     const [allProducts, setAllProducts] = useState([]);
     const [isAddedToCart, setIsAddedToCart] = useState([]);
     const [menuItemsDetector, setMenuItemsDetector] = useState([true, false, false, false]);
+    // location
+    const [city, setCity] = useState('');
+    const [area, setArea] = useState('');
 
     // I want to show My additional info
     const [isAddInfo, setIsAddInfo] = useState(true);
@@ -125,6 +128,9 @@ function AppContextProvider({children}){
         isAddedToCart, setIsAddedToCart, 
         menuItemsDetector, setMenuItemsDetector,
         fetchProducts,
+        // location 
+        city, setCity,
+        area, setArea,
         // I will remove when this is completed
         isAddInfo, setIsAddInfo
     }

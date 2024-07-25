@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { LuHome, LuPercent, LuMegaphone } from "react-icons/lu";
 import { HiOutlineFire } from "react-icons/hi2";
 import { FiPhone } from "react-icons/fi";
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import { GoHomeFill } from "react-icons/go";
 import { BsFire } from "react-icons/bs";
 import { RiPercentFill } from "react-icons/ri";

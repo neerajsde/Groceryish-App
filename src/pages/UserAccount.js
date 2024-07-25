@@ -1,16 +1,16 @@
 import React, { useContext, useState } from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/sections/navbar/Navbar'
 import Login from '../pages/Login'
 import { AppContext } from '../context/AppContext';
 import { FaRegUser, FaUser, FaRegHeart, FaHeart } from "react-icons/fa";
 import { HiOutlineClipboardCopy, HiClipboardCopy } from "react-icons/hi";
 import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
 import { LuPen } from "react-icons/lu";
-import UpdateUser from '../components/UpdateUser';
-import Dashboard from '../components/Dashboard';
-import Favourites from '../components/Favourites';
-import Settings from '../components/Settings';
-import UpdateProfilePic from '../components/UpdateProfilePic';
+import UpdateUser from '../components/user-info/UpdateUser';
+import Dashboard from '../components/dashboard/Dashboard';
+import Favourites from '../components/dashboard/Favourites';
+import Settings from '../components/dashboard/Settings';
+import UpdateProfilePic from '../components/user-info/UpdateProfilePic';
 
 const UserAccount = () => {
     const {isUserInfoActive,isLoggedIn, isProfilePic, setProfilePic, updateProfilePic} = useContext(AppContext);

@@ -1,9 +1,9 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { IoClose } from "react-icons/io5";
 import { IoMdCloudUpload } from "react-icons/io";
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import { MdAddPhotoAlternate, MdAddAPhoto, MdCamera } from "react-icons/md";
-import Spinner from '../components/Spinner'
+import Spinner from '../Spinner'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
