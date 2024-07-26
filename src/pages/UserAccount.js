@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react'
-import Navbar from '../components/sections/navbar/Navbar'
-import Login from '../pages/Login'
+import Navbar from '../components/sections/navbar/Navbar';
+import Footer from '../components/sections/Footer';
 import { AppContext } from '../context/AppContext';
 import { FaRegUser, FaUser, FaRegHeart, FaHeart } from "react-icons/fa";
 import { HiOutlineClipboardCopy, HiClipboardCopy } from "react-icons/hi";
 import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
 import { LuPen } from "react-icons/lu";
-import UpdateUser from '../components/user-info/UpdateUser';
+import UpdateUser from '../components/dashboard/UpdateUser';
 import Dashboard from '../components/dashboard/Dashboard';
 import Favourites from '../components/dashboard/Favourites';
 import Settings from '../components/dashboard/Settings';
 import UpdateProfilePic from '../components/user-info/UpdateProfilePic';
+import { useNavigate } from 'react-router-dom';
 
 const UserAccount = () => {
     const {isUserInfoActive,isLoggedIn, isProfilePic, setProfilePic, updateProfilePic} = useContext(AppContext);
@@ -18,17 +19,18 @@ const UserAccount = () => {
     const [isDashboard, setIsDashboard] = useState(false);
     const [isFavoruites, setIsFavoruites] = useState(false);
     const [isSettings, setIsSettings] = useState(false);
+    const navigate = useNavigate();
 
   return (
     <div className='w-full'>
+        <Navbar/>
         {
             isLoggedIn ?
             (
                 <div className='w-full relative'>
-                    <Navbar/>
 
                     <div className='w-full flex border relative user-info'>
-                        <div className='w-[300px] h-[80vh] flex flex-col justify-center items-center border-r-2 border-gray-300 gap-8'>
+                        <div className='w-[300px] h-[90vh] flex flex-col justify-center items-center border-r-2 border-gray-300 gap-8'>
                             <div className='w-full flex justify-center items-center'>
                                 <div 
                                     title='Update your profile picture'
@@ -116,11 +118,13 @@ const UserAccount = () => {
                 </div>
             ): 
             (
-                <div className='w-full h-full flex items-center justify-center'>
-                    <Login/>
+                <div className='w-full h-[50vh] flex flex-col items-center justify-center gap-4'>
+                    <div className='text-base font-semibold'>Please log in to see your profile...</div>
+                    <button className='text-lg font-bold border-2 px-4 border-gray-500 rounded' onClick={() => navigate('/login')}>Login</button>
                 </div>
             )
         }
+        <Footer/>
     </div>
   )
 }

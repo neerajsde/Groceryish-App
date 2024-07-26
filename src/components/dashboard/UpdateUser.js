@@ -58,7 +58,7 @@ const UpdateUser = () => {
     }
 
   return (
-    <div className='w-full h-[80vh] flex flex-col gap-8 px-12 py-8 overflow-y-scroll'>
+    <div className='w-full h-[90vh] flex flex-col gap-8 px-12 py-8 overflow-y-scroll'>
         <h2 className='text-2xl font-bold'>User Profile</h2>
         <div className='w-full flex flex-wrap items-end justify-evenly gap-y-4'>
             <div className='w-full max-w-[40%] flex flex-col gap-1'>

@@ -13,18 +13,18 @@ import Location from './Location';
 import MenuItems from './MenuItems';
 
 const Navbar = () => {
-    const { isLoggedIn, cartItem, isUserInfoActive, userData } = useContext(AppContext);
+    const { isLoggedIn, cartItem, isUserInfoActive, userData, cartTotalAmount } = useContext(AppContext);
     const navigate = useNavigate();
     const [showMenuItems, setMenuItems] = useState(false);
     
     return (
-        <nav className='w-full h-[80px] flex justify-between items-center pr-4 bg-white text-slate-600 border border-b-[1.5px] border-slate-200 max-lg:h-[70px] max-sm:h-[60px]'>
+        <nav className='w-full h-[80px] flex justify-between items-center pr-8 bg-white text-slate-600 border border-b-[1.5px] border-slate-200 max-lg:h-[70px] max-sm:h-[60px] max-md:pr-4'>
             <Logo/>
             <div className='max-lg:hidden'><Location/></div>
             <div className='max-lg:hidden'><Search/></div>
 
             <div className='flex items-center gap-6 max-sm:4'>
-                <div className={`flex items-center justify-between gap-6 ${showMenuItems ? 'max-md:absolute max-md:flex-col max-md:w-full max-md:h-screen max-md:top-[70px] max-md:left-0 max-md:bg-[#1111] max-md:backdrop-blur max-md:z-20 max-md:justify-start max-sm:top-[60px]':'max-md:hidden'}`}>
+                <div className={`flex items-center justify-between gap-6 ${showMenuItems ? 'max-md:absolute max-md:flex-col max-md:w-full max-md:h-full max-md:top-[70px] max-md:left-0 max-md:bg-[#1111] max-md:backdrop-blur max-md:z-20 max-md:justify-start max-sm:top-[60px]':'max-md:hidden'}`}>
                     <div className='w-full lg:hidden md:hidden px-4 py-4 flex justify-between'>
                         <div className='text-xl text-red-700 font-bold'>Menu</div>
                         {
@@ -39,9 +39,9 @@ const Navbar = () => {
                             <div className='font-bold text-black relative'>
                                 <FaRegHeart className='text-3xl max-lg:text-2xl'/>
                                 {
-                                    isLoggedIn && (
+                                    isLoggedIn && userData.user.wishlist.length > 0 && (
                                         <div className='absolute top-[-8px] right-[-10px] w-[20px] h-[20px] border-2 border-white rounded-full bg-green-600 flex items-center justify-center max-md:border-green-600 max-md:bg-white'>
-                                            <div className='text-xs text-white max-md:text-green-500'>2</div>
+                                            <div className='text-xs text-white max-md:text-green-500'>{userData.user.wishlist.length}</div>
                                         </div>
                                     )
                                 }
@@ -64,11 +64,11 @@ const Navbar = () => {
                                         )
                                     }
                                 </div>
-                                <div className='flex flex-col'>
+                                <div className='flex flex-col items-end'>
                                     <div className='text-base font-semibold text-black'>Cart</div>
                                     {
-                                        isLoggedIn && cartItem !== 0 && (
-                                            <div className='text-xs font-medium text-green-500'>$200</div>
+                                        isLoggedIn && cartItem !== 0 && cartTotalAmount && (
+                                            <div className='text-xs font-medium text-green-500'>{`₹${Math.round((cartTotalAmount.totalAmount + cartTotalAmount.discountAmount) * 100) / 100}`}</div>
                                         )
                                     }
                                 </div>

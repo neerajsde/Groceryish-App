@@ -25,6 +25,8 @@ function AppContextProvider({children}){
     // location
     const [city, setCity] = useState('');
     const [area, setArea] = useState('');
+    // process to buy in cart
+    const [cartTotalAmount, setCartTotalAmount] = useState(null);
 
     // I want to show My additional info
     const [isAddInfo, setIsAddInfo] = useState(true);
@@ -48,7 +50,6 @@ function AppContextProvider({children}){
                     setUpdateProfilePic(data.user.img);
                     setUserData(data);
                     setCartItem(data.user.cart.length);
-                    console.log(data);
                     navigate('/');
                 }
                 else{
@@ -89,7 +90,6 @@ function AppContextProvider({children}){
         try{
             setIsLoading(true);
             const url = `${baseUrl}/get-products`;
-            console.log(url);
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -107,6 +107,28 @@ function AppContextProvider({children}){
         }
         finally{
             setIsLoading(false);
+        }
+    }
+
+    const fetchUserCartTotalAmount = async () => {
+        try{
+            const url = `${baseUrl}/get-selected-all-items`;
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body:JSON.stringify({user_id: userData.user._id})
+            });
+
+            const data = await response.json();
+            if(data.success){
+                setCartTotalAmount(data);
+                console.log('data fetched sucessfully in cart');
+            }
+        }
+        catch(err){
+            toast.error('something went wrong.');
         }
     }
 
@@ -132,7 +154,9 @@ function AppContextProvider({children}){
         city, setCity,
         area, setArea,
         // I will remove when this is completed
-        isAddInfo, setIsAddInfo
+        isAddInfo, setIsAddInfo,
+        // user cart total amount
+        cartTotalAmount, setCartTotalAmount, fetchUserCartTotalAmount
     }
 
     return (

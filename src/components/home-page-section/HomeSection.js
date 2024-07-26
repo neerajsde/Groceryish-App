@@ -233,13 +233,13 @@ const HomeSection = () => {
   return (
     <div className='w-full relative'>
         <div className='max-md:hidden'>{currentBanner}</div>
-        <div className='md:hidden w-full min-h-screen bg-green-300 flex justify-center items-end relative'>
+        <div className='md:hidden w-full min-h-[80vh] bg-green-300 flex justify-center items-end relative'>
             <img 
               src='https://res.cloudinary.com/do1xweis7/image/upload/v1721280453/fruits_banner_hq3qfx.png' 
               alt=''
-                className='w-[400px]'
+              className='w-[400px]'
             />
-            <div className='w-full min-h-screen absolute top-0 left-0 bg-[#1111112c]'></div>
+            <div className='w-full min-h-[80vh] absolute top-0 left-0 bg-[#1111112c]'></div>
         </div>
         
         <div className='absolute top-0 right-0 w-full flex flex-col items-center justify-center max-md:top-5'>
@@ -248,7 +248,7 @@ const HomeSection = () => {
             <div className='flex flex-col gap-6 max-lg:gap-4 max-md:gap-5'>
               {
                 isLoggedIn && (
-                  <div className='flex flex-col max-md:hidden'>
+                  <div className='flex flex-col'>
                     <div className='text-lg text-gray-500 font-semibold'>Welcome 👋</div>
                     <div className='text-2xl text-black font-bold capitalize'>{userData.user.name}</div>
                   </div>

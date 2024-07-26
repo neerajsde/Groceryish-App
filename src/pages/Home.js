@@ -45,7 +45,7 @@ const Home = () => {
         {
           isUserInfoActive &&
           (
-            <div className={`w-full min-h-screen absolute top-0 left-0 bg-black opacity-70 backdrop-blur`}></div>
+            <div className={`w-full h-full absolute top-0 left-0 bg-black opacity-70 backdrop-blur`}></div>
           )
         }
       </div>

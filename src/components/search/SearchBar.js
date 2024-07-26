@@ -10,7 +10,7 @@ const SearchBar = () => {
     <div className={`w-full min-h-[50px] flex items-center justify-between lg:hidden px-2 py-2 gap-2 border-b max-sm:flex-col bg-[#2ff5e5bc]`}>
         {
             isLoggedIn ? (
-              <div className='flex items-center gap-4 max-sm:w-full justify-around'>
+              <div className='flex items-center gap-4 max-sm:w-full justify-around max-sm:gap-1'>
                 <ShowUserName/>
                 <div className='sm:hidden'><Location/></div>
               </div>

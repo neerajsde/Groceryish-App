@@ -141,7 +141,7 @@ const Login = () => {
             >Forgot Password?</div>
 
             <button
-              className='flex justify-center items-center gap-4 text-base font-semibold uppercase bg-gray-300 w-full rounded-sm py-2 transition ease-in duration-300 hover:bg-slate-700'
+              className='flex justify-center items-center gap-4 text-base font-semibold uppercase w-full rounded-sm py-2 bg-slate-700'
               onClick={loginHandler}
             >log in {isLoading && (<Spinner/>)}
             </button>
