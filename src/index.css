@@ -17,6 +17,12 @@ body{
     font-family: "Roboto Mono", monospace;
 }
 
+.home-bg-banner{
+   background: #ffffff;
+   background: -webkit-linear-gradient(129deg, #ffffff 0%, #ccffd6 50%, #54f7b0 100%);
+   background: linear-gradient(129deg, #ffffff 0%, #ccffd6 50%, #54f7b0 100%);
+}
+
 
 .white-spinner{
    width: 26px;

@@ -22,8 +22,7 @@ const Products = ({visiable_products}) => {
             (
                 <div className='w-full grid grid-cols-3 justify-center items-center gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1'>
                     {  
-                        allProducts.length === 0 ? 
-                        (<h2>No Item Is There</h2>) : 
+                        allProducts.length > 0 &&
                         (
                             allProducts.map((data, index) => {
                                 return (<Item key={index} data={data} index={index}/>)

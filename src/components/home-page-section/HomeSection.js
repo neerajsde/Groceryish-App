@@ -141,7 +141,7 @@ const HomeSection = () => {
 
   function handleRightMoveItems() {
     if(!isVisiableRightArrow){
-      toast.error('no more items.');
+      toast.error('no more items.'); 
       return;
     }
     const items = visiableItems;
@@ -233,7 +233,7 @@ const HomeSection = () => {
   return (
     <div className='w-full relative'>
         <div className='max-md:hidden'>{currentBanner}</div>
-        <div className='md:hidden w-full min-h-[80vh] bg-green-300 flex justify-center items-end relative'>
+        <div className='md:hidden w-full min-h-[80vh] home-bg-banner flex justify-center items-end relative'>
             <img 
               src='https://res.cloudinary.com/do1xweis7/image/upload/v1721280453/fruits_banner_hq3qfx.png' 
               alt=''
@@ -242,10 +242,10 @@ const HomeSection = () => {
             <div className='w-full min-h-[80vh] absolute top-0 left-0 bg-[#1111112c]'></div>
         </div>
         
-        <div className='absolute top-0 right-0 w-full flex flex-col items-center justify-center max-md:top-5'>
+        <div className='absolute top-0 right-0 w-full flex flex-col items-center justify-center max-md:top-10'>
 
           <div className='w-full flex items-center justify-evenly max-lg:justify-center max-md:flex-col'>
-            <div className='flex flex-col gap-6 max-lg:gap-4 max-md:gap-5'>
+            <div className='flex flex-col gap-6 max-lg:gap-4 max-md:gap-5 max-sm:px-4'>
               {
                 isLoggedIn && (
                   <div className='flex flex-col'>
@@ -254,7 +254,7 @@ const HomeSection = () => {
                   </div>
                 )
               }
-              <h2 className='text-5xl font-bold text-slate-700 max-lg:text-3xl'>Don't miss our daily <br/>amazing deals.</h2>
+              <h2 className='text-5xl font-bold text-slate-700 max-lg:text-3xl max-sm:text-xl'>Don't miss our daily <br/>amazing deals.</h2>
               <p className='text-xl font-semibold text-gray-500 max-lg:text-base'>Save upto 60% off on your first order</p>
               <div className='w-full flex items-center justify-between relative'>
                 <input
@@ -290,7 +290,9 @@ const HomeSection = () => {
         </div>
 
 
-        <div className='w-full flex flex-col items-center py-8 gap-8'>
+        { 
+          maxSixItems.length !== 0 &&
+          <div className='w-full flex flex-col items-center py-8 gap-8'>
             <div className='w-full flex items-center justify-between px-8 max-md:px-4 max-md:flex-col max-md:gap-4'>
               <h2 className='text-3xl font-bold text-slate-600 max-lg:text-2xl max-md:text-xl'>Explore Categories</h2>
               <div className='flex items-center gap-6 max-md:flex-wrap max-md:gap-y-1 max-sm:gap-3 max-md:justify-between'>
@@ -333,7 +335,8 @@ const HomeSection = () => {
 
               <div className={`text-3xl bg-gray-200 py-4 px-2 max-md:text-xl cursor-pointer ${isVisiableRightArrow ? 'cursor-pointer text-black' : ' cursor-not-allowed text-white'}`} onClick={handleRightMoveItems}><FaChevronRight/></div>
             </div>
-        </div>
+          </div>
+        }
 
         <Featued_Products/>
     </div>

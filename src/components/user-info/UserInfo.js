@@ -10,37 +10,35 @@ const UserInfo = () => {
   const {setIsLoggedIn, setUserData, setIsUserInfoActive, setIsSellProduct} = useContext(AppContext);
   const navigate = useNavigate();
   return (
-    <div className='w-[300px] border border-black bg-white rounded-sm flex justify-center items-center shadow-lg max-lg:mt-[3rem]'
+    <div className='w-[300px] border border-black bg-[rgba(223,250,239,0.5)] backdrop-blur rounded-2xl flex justify-center items-center shadow-lg max-lg:mt-[3rem]'
       onMouseEnter={() =>  setIsUserInfoActive(true)}
       onMouseLeave={() =>  setIsUserInfoActive(false)}
     >
-      <div className='w-full p-4 text-sm gap-3'>
+      <div className='w-full p-4 text-sm flex flex-col items-start gap-2 text-black font-semibold'>
 
         <div 
-          className='w-full border border-gray-500 flex justify-between items-center py-2 px-4 text-base font-medium bg-gray-300 rounded cursor-pointer transition duration-200 ease-in hover:bg-gray-400'
+          className='w-full border-b border-gray-600 flex justify-between items-center py-2 px-1 text-base font-medium cursor-pointer'
           onClick={() => navigate('/user-account')}
         >
-          <div>Your Account</div>
+          <div className='text-black font-semibold hover:underline'>Your Account</div>
           <div className='text-xl'><FaUserEdit/></div>
         </div>
 
-        <div className='pl-1 hover:underline hover:text-red-500 cursor-pointer'>Your Orders</div>
-        <div className='pl-1 hover:underline hover:text-red-500 cursor-pointer'>Your Address</div>
-        <div className='pl-1 hover:underline hover:text-red-500 cursor-pointer'>Payment Options</div>
+        <div className='pl-1 hover:underline cursor-pointer'>Your Orders</div>
+        <div className='pl-1 hover:underline cursor-pointer'>Your Address</div>
+        <div className='pl-1 hover:underline cursor-pointer'>Payment Options</div>
 
-        <div className='pl-1 hover:underline hover:text-red-500 cursor-pointer'>Your Recommendecations</div>
+        <div className='pl-1 hover:underline cursor-pointer'>Your Recommendecations</div>
 
-        <div className='pl-1 hover:underline hover:text-red-500 cursor-pointer'>Your History</div>
-
-        <div className='w-full h-[1px] bg-gray-400 mt-3 mb-3'></div>
-        <div className='w-full flex flex-col items-center gap-3'>
+        <div className='pl-1 hover:underline cursor-pointer'>Your History</div>
+        <div className='w-full flex flex-col items-center gap-2 border-t border-black py-2 px-1'>
           <div 
-            className='flex items-center gap-2 border-2 border-green-600 rounded-sm bg-green-500 py-1 px-4 text-lg font-semibold text-white hover:underline cursor-pointer'
+            className='w-full flex justify-between items-center text-base font-semibold rounded cursor-pointer hover:underline'
             onClick={() => setIsSellProduct(true)}
-          ><IoMdAddCircleOutline className='text-2xl'/> Sell your product</div>
+          >Sell your product<IoMdAddCircleOutline className='text-xl'/></div>
 
           <div 
-            className='w-full border border-gray-500 flex justify-between items-center py-2 px-4 text-base font-medium rounded cursor-pointer transition duration-200 ease-in hover:bg-gray-400 gap-1'
+            className='w-full flex justify-between items-center text-base font-semibold rounded cursor-pointer hover:underline'
             onClick={() => {
               setIsUserInfoActive(false);
               navigate('/login');
@@ -50,7 +48,7 @@ const UserInfo = () => {
           </div>
           
           <div 
-            className='w-full text-red-500 border border-gray-500 flex justify-between items-center py-2 px-4 text-base font-medium rounded cursor-pointer transition duration-200 ease-in hover:bg-gray-200 gap-1'
+            className='w-full flex justify-between items-center text-base font-semibold rounded cursor-pointer hover:underline'
             onClick={() => {
               setIsLoggedIn(false);
               setUserData(null);

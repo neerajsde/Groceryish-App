@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../../../context/AppContext';
 
 const MenuItems = () => {
+  const {isLoggedIn} = useContext(AppContext);
   const navigate = useNavigate();
   
   return (
@@ -9,6 +11,7 @@ const MenuItems = () => {
         <div className='text-base font-semibold text-black flex justify-center w-[150px] bg-white border border-gray-300 rounded-md px-4 py-2' onClick={() => navigate('/signup')}>
             Sign Up
         </div>
+        
     </div>
   )
 }

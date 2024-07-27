@@ -39,26 +39,30 @@ const Featued_Products = () => {
     };
 
   return (
-    <div className='w-full flex flex-col items-center py-8 gap-8 max-md:gap-1'>
-        <div className='w-full flex items-center justify-between px-8 max-md:px-4 max-md:flex-col max-md:gap-4'>
-            <h2 className='text-3xl font-bold text-slate-600 max-lg:text-2xl max-md:text-xl'>Featured Products</h2>
-            <div className='flex items-center gap-6 max-md:flex-wrap max-md:gap-y-1 max-sm:gap-3 max-md:justify-between'>
-                {
-                uniqueCategory.map((product, index) => {
-                return (
-                    <div 
-                    key={index} 
-                    onClick={() => categoryHandler(product)} 
-                    className={`text-base font-semibold cursor-pointer ${getClassNames(product)} transition duration-200 ease-linear`}
-                    >
-                    {product}
-                    </div>
-                );
-                })
-                }
+    <div className='w-full'>
+        {
+          uniqueCategory.length > 1 && (
+            <div className='w-full flex flex-col items-center py-8 gap-8 max-md:gap-1'>
+              <div className='w-full flex items-center justify-between px-8 max-md:px-4 max-md:flex-col max-md:gap-4'>
+                  <h2 className='text-3xl font-bold text-slate-600 max-lg:text-2xl max-md:text-xl'>Featured Products</h2>
+                  <div className='flex items-center gap-6 max-md:flex-wrap max-md:gap-y-1 max-sm:gap-3 max-md:justify-between'>
+                    {
+                      uniqueCategory.map((product, index) => {
+                      return (
+                          <div 
+                            key={index} 
+                            onClick={() => categoryHandler(product)} 
+                            className={`text-base font-semibold cursor-pointer ${getClassNames(product)} transition duration-200 ease-linear`}
+                          >{product}</div>
+                      );
+                      })
+                    }
+                  </div>
+              </div>
+              <Products visiable_products={visiableProducts}/>
             </div>
-        </div>
-        <Products visiable_products={visiableProducts}/>
+          )
+        }
     </div>
   )
 }
