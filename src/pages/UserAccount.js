@@ -3,8 +3,8 @@ import Navbar from '../components/sections/navbar/Navbar';
 import Footer from '../components/sections/Footer';
 import { AppContext } from '../context/AppContext';
 import { FaRegUser, FaUser, FaRegHeart, FaHeart } from "react-icons/fa";
-import { HiOutlineClipboardCopy, HiClipboardCopy } from "react-icons/hi";
 import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
+import { MdOutlineDashboard, MdDashboard } from "react-icons/md";
 import { LuPen } from "react-icons/lu";
 import UpdateUser from '../components/dashboard/UpdateUser';
 import Dashboard from '../components/dashboard/Dashboard';
@@ -16,8 +16,8 @@ import SearchBar from '../components/search/SearchBar';
 
 const UserAccount = () => {
     const {isUserInfoActive,isLoggedIn, isProfilePic, setProfilePic, updateProfilePic} = useContext(AppContext);
-    const [isUserInfo, setIsUserInfo] = useState(true);
-    const [isDashboard, setIsDashboard] = useState(false);
+    const [isDashboard, setIsDashboard] = useState(true);
+    const [isUserInfo, setIsUserInfo] = useState(false);
     const [isFavoruites, setIsFavoruites] = useState(false);
     const [isSettings, setIsSettings] = useState(false);
     const navigate = useNavigate();
@@ -52,29 +52,29 @@ const UserAccount = () => {
 
                             <div className='w-full flex flex-col justify-start items-center gap-2 max-sm:flex-row max-sm:border max-sm:py-2 max-sm:bg-green-100'>
                                 <div 
+                                    className={`w-full flex justify-start items-center gap-4 border-r-4 pl-4 py-1 transition-all duration-300 ease-in cursor-pointer hover:text-black ${isDashboard ? 'border-slate-500 text-black' : 'text-gray-400 border-transparent'} max-sm:border-none max-sm:justify-center`}
+                                    onClick={() => {
+                                        setIsDashboard(true);
+                                        setIsUserInfo(false);
+                                        setIsFavoruites(false);
+                                        setIsSettings(false);
+                                    }}
+                                >
+                                    <div className='text-xl font-bold'>{isDashboard ? (<MdDashboard/>) : (<MdOutlineDashboard/>)}</div>
+                                    <p className='text-lg font-semibold max-sm:hidden'>Dashboard</p>
+                                </div>
+
+                                <div 
                                     className={`w-full flex justify-start items-center gap-4 border-r-4 pl-4 py-1 transition-all duration-300 ease-in cursor-pointer hover:text-black ${isUserInfo ? 'border-slate-500 text-black' : 'text-gray-400 border-transparent'} max-sm:border-none max-sm:justify-center`}
                                     onClick={() => {
-                                        setIsUserInfo(true);
                                         setIsDashboard(false);
+                                        setIsUserInfo(true);
                                         setIsFavoruites(false);
                                         setIsSettings(false);
                                     }}
                                 >
                                     <div className='text-xl font-bold'>{isUserInfo ? (<FaUser/>) : (<FaRegUser/>)}</div>
                                     <p className='text-lg font-semibold max-sm:hidden'>User Details</p>
-                                </div>
-
-                                <div 
-                                    className={`w-full flex justify-start items-center gap-4 border-r-4 pl-4 py-1 transition-all duration-300 ease-in cursor-pointer hover:text-black ${isDashboard ? 'border-slate-500 text-black' : 'text-gray-400 border-transparent'} max-sm:border-none max-sm:justify-center`}
-                                    onClick={() => {
-                                        setIsUserInfo(false);
-                                        setIsDashboard(true);
-                                        setIsFavoruites(false);
-                                        setIsSettings(false);
-                                    }}
-                                >
-                                    <div className='text-xl font-bold'>{isDashboard ? (<HiClipboardCopy/>) : (<HiOutlineClipboardCopy/>)}</div>
-                                    <p className='text-lg font-semibold max-sm:hidden'>Dashboard</p>
                                 </div>
 
                                 <div 

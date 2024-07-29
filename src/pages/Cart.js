@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../components/sections/navbar/Navbar';
 import { AppContext } from '../context/AppContext';
 import toast from 'react-hot-toast';
-import { TiArrowSortedDown, TiTick } from "react-icons/ti";
+import { TiTick } from "react-icons/ti";
 import { AiOutlineLogin } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/sections/Footer';
@@ -279,7 +279,7 @@ const Cart = () => {
 
     // Combine the integer part and the decimal part (if any)
     return "₹" + parts.join(".");
-}
+  }
 
   return (
     <div className='w-full flex flex-col items-center'>

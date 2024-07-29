@@ -27,6 +27,9 @@ function AppContextProvider({children}){
     const [area, setArea] = useState('');
     // process to buy in cart
     const [cartTotalAmount, setCartTotalAmount] = useState(null);
+    // wishlist 
+    const [wishlistLength, setWishlistLength] = useState(0);
+    const [wishlistItems, setWishlistItems] = useState([]);
 
     // I want to show My additional info
     const [isAddInfo, setIsAddInfo] = useState(true);
@@ -50,6 +53,7 @@ function AppContextProvider({children}){
                     setUpdateProfilePic(data.user.img);
                     setUserData(data);
                     setCartItem(data.user.cart.length);
+                    setWishlistLength(data.user.wishlist.length);
                     navigate('/');
                 }
                 else{
@@ -156,7 +160,10 @@ function AppContextProvider({children}){
         // I will remove when this is completed
         isAddInfo, setIsAddInfo,
         // user cart total amount
-        cartTotalAmount, setCartTotalAmount, fetchUserCartTotalAmount
+        cartTotalAmount, setCartTotalAmount, fetchUserCartTotalAmount,
+        // wishlist
+        wishlistLength, setWishlistLength,
+        wishlistItems, setWishlistItems
     }
 
     return (

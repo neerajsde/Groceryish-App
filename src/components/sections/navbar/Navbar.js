@@ -13,7 +13,7 @@ import Location from './Location';
 import MenuItems from './MenuItems';
 
 const Navbar = () => {
-    const { isLoggedIn, cartItem, isUserInfoActive, userData, cartTotalAmount } = useContext(AppContext);
+    const { isLoggedIn, cartItem, isUserInfoActive, userData, cartTotalAmount, wishlistLength } = useContext(AppContext);
     const navigate = useNavigate();
     const [showMenuItems, setMenuItems] = useState(false);
     
@@ -39,9 +39,9 @@ const Navbar = () => {
                             <div className='font-bold text-black relative'>
                                 <FaRegHeart className='text-3xl max-lg:text-2xl'/>
                                 {
-                                    isLoggedIn && userData.user.wishlist.length > 0 && (
+                                    isLoggedIn && wishlistLength > 0 && (
                                         <div className='absolute top-[-8px] right-[-10px] w-[20px] h-[20px] border-2 border-white rounded-full bg-green-600 flex items-center justify-center max-md:border-green-600 max-md:bg-white'>
-                                            <div className='text-xs text-white max-md:text-green-500'>{userData.user.wishlist.length}</div>
+                                            <div className='text-xs text-white max-md:text-green-500'>{wishlistLength}</div>
                                         </div>
                                     )
                                 }

@@ -4,14 +4,13 @@ import Spinner from '../Spinner';
 import Item from './Item';
 
 const Products = ({visiable_products}) => {
-    const allProducts = visiable_products;
     const {isLoading, setIsAddedToCart} = useContext(AppContext);
 
     useEffect(() => {
-        if(allProducts.length === 0){
-            setIsAddedToCart(new Array(allProducts.length).fill(false));
+        if(visiable_products.length === 0){
+            setIsAddedToCart(new Array(visiable_products.length).fill(false));
         }
-    }, [allProducts]);
+    }, [visiable_products]);
 
   return (
     <div className='w-full flex justify-start items-center px-8 py-4 max-sm:px-4'>
@@ -22,9 +21,9 @@ const Products = ({visiable_products}) => {
             (
                 <div className='w-full grid grid-cols-3 justify-center items-center gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1'>
                     {  
-                        allProducts.length > 0 &&
+                        visiable_products.length > 0 &&
                         (
-                            allProducts.map((data, index) => {
+                            visiable_products.map((data, index) => {
                                 return (<Item key={index} data={data} index={index}/>)
                             })
                         )

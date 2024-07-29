@@ -9,9 +9,10 @@ import Cart from './pages/Cart'
 import { AppContext } from './context/AppContext'
 import AddProduct from './components/product-info/AddProduct'
 import Wishlist from './pages/Wishlist'
+import BlackSpinner from './components/BlackSpinner'
 
 const App = () => {
-  const {isSellProduct} = useContext(AppContext);
+  const {isSellProduct, isLoading} = useContext(AppContext);
   return (
     <div className='w-screen h-screen relative overflow-x-hidden'>
       <Toaster/>
@@ -26,6 +27,16 @@ const App = () => {
 
       {
         isSellProduct && (<AddProduct/>)
+      }
+      {
+        isLoading && (
+          <div className='absolute top-0 left-0 w-screen h-screen flex justify-center items-center bg-[#1111]'>
+            <div className="w-[200px] h-[150px] rounded-lg bg-[rgba(248,203,204,0.5)] backdrop-blur flex flex-col justify-center items-center gap-2">
+              <div className='text-md font-semibold text-black'>Loading...</div>
+              <BlackSpinner/>
+            </div>
+          </div>
+        )
       }
     </div>
   )
