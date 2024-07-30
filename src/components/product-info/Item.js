@@ -1,28 +1,28 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { BiCartAdd } from "react-icons/bi";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
+import Spinner from '../Spinner';
+import toast from 'react-hot-toast';
 
-const Item = ({ data, index }) => {
+const Item = ({ data }) => {
     const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
-    const { userData, isLoggedIn, setCartItem, isAddedToCart, setIsAddedToCart, setWishlistLength, setWishlistItems } = useContext(AppContext);
+    const { userData, isLoggedIn, setCartItem, setWishlistLength, setWishlistItems } = useContext(AppContext);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [isLike, setIsLike] = useState(false);
+    const [isCartItem, setIsCartItem] = useState(false);
 
     const handleAddToCart = async (product_id) => {
-        setIsLoading(true);
         if (!isLoggedIn) {
-            window.alert('Please login');
-            navigate('/login');
-            toast.error('Please Login Here');
+            toast.error('Please Login');
             return;
         }
 
         try {
+            setIsLoading(true);
             const url = `${baseUrl}/cart-item/add`;
             const response = await fetch(url, {
                 method: 'PUT',
@@ -37,14 +37,9 @@ const Item = ({ data, index }) => {
 
             const data = await response.json();
             if (data.sucess) {
-                setIsAddedToCart((prev) => {
-                    console.log('Prev Array: ', [...prev]);
-                    const updatedIsAddedToCart = [...prev];
-                    updatedIsAddedToCart[index] = true;
-                    return updatedIsAddedToCart;
-                });
                 toast.success(data.message);
                 setCartItem(data.user.cart.length);
+                setIsCartItem(true);
             } else {
                 toast.error(data.message);
             }
@@ -57,7 +52,7 @@ const Item = ({ data, index }) => {
 
     const handleAddToWishList = async (productId) => {
         if(!isLoggedIn){
-            window.alert('Please Login');
+            toast.error('Please Login');
             return;
         }
 
@@ -82,7 +77,10 @@ const Item = ({ data, index }) => {
                 setWishlistItems(data.wishlist);
             }
             else{
-                toast.error(data.setWishlistLength);
+                if(data.message === 'Product already added to wishlist'){
+                    setIsLike(true);
+                }
+                toast.error(data.message);
             }
         } catch(err){
             toast.error('error in add to wishlist');
@@ -123,23 +121,23 @@ const Item = ({ data, index }) => {
                     className='absolute top-1 right-1 text-3xl w-[40px] h-[40px] rounded-full bg-[#6666] flex items-center justify-center cursor-pointer'
                     onClick={() => handleAddToWishList(data._id)}
                 >
-                    {isLike ? (<FcLike/>) : (<FcLikePlaceholder/>)}
+                    {data.isInWishlist || isLike ? (<FcLike/>) : (<FcLikePlaceholder/>)}
                 </div>
             </div>
             <div className='w-full flex justify-evenly items-center max-lg:flex-col max-lg:gap-2'>
                 {
-                    isAddedToCart[index] ?
+                    data.isAddedToCart || isCartItem ?
                         (
                             <button
                                 className='w-[170px] flex justify-evenly items-center border-2 border-slate-600 text-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-white transition duration-200 hover:bg-slate-600 hover:text-white max-lg:w-full'
                                 onClick={() => navigate('/cart')}
-                            >Go to cart {isLoading && (<div className='btn-spinner'></div>)}</button>
+                            >Go to cart</button>
                         ) :
                         (
                             <button
                                 className='w-[170px] flex justify-evenly items-center border-2 border-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-slate-500 text-white transition duration-200 hover:bg-slate-600 hover:text-white max-lg:w-full'
                                 onClick={() => handleAddToCart(data._id)}
-                            >Add to cart {isLoading ? (<div className='btn-spinner'></div>) : (<div className='text-xl'><BiCartAdd/></div>)}</button>
+                            >Add to cart {isLoading ? (<Spinner/>) : (<div className='text-xl'><BiCartAdd/></div>)}</button>
                         )
                 }
                 <button

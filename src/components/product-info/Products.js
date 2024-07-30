@@ -1,22 +1,16 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from '../../context/AppContext'
-import Spinner from '../Spinner';
+import BlackSpinner from '../BlackSpinner';
 import Item from './Item';
 
 const Products = ({visiable_products}) => {
-    const {isLoading, setIsAddedToCart} = useContext(AppContext);
-
-    useEffect(() => {
-        if(visiable_products.length === 0){
-            setIsAddedToCart(new Array(visiable_products.length).fill(false));
-        }
-    }, [visiable_products]);
+    const {isLoading} = useContext(AppContext);
 
   return (
-    <div className='w-full flex justify-start items-center px-8 py-4 max-sm:px-4'>
+    <div className='w-full flex justify-center items-center px-8 py-4 max-sm:px-4'>
         {
             isLoading ? 
-            (<Spinner/>)
+            (<BlackSpinner/>)
             : 
             (
                 <div className='w-full grid grid-cols-3 justify-center items-center gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1'>
@@ -24,7 +18,7 @@ const Products = ({visiable_products}) => {
                         visiable_products.length > 0 &&
                         (
                             visiable_products.map((data, index) => {
-                                return (<Item key={index} data={data} index={index}/>)
+                                return (<Item key={index} data={data}/>)
                             })
                         )
                     }

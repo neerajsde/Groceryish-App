@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast';
 import Home from './pages/Home'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
-import { Toaster } from 'react-hot-toast'
 import UserAccount from './pages/UserAccount'
 import Cart from './pages/Cart'
 import { AppContext } from './context/AppContext'
@@ -30,7 +30,7 @@ const App = () => {
       }
       {
         isLoading && (
-          <div className='absolute top-0 left-0 w-screen h-screen flex justify-center items-center bg-[#1111]'>
+          <div className='fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-8'>
             <div className="w-[200px] h-[150px] rounded-lg bg-[rgba(248,203,204,0.5)] backdrop-blur flex flex-col justify-center items-center gap-2">
               <div className='text-md font-semibold text-black'>Loading...</div>
               <BlackSpinner/>

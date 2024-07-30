@@ -20,7 +20,7 @@ function AppContextProvider({children}){
     const [isSellProduct, setIsSellProduct] = useState(false);
     const [cartData, setCartData] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
-    const [isAddedToCart, setIsAddedToCart] = useState([]);
+    
     const [menuItemsDetector, setMenuItemsDetector] = useState([true, false, false, false]);
     // location
     const [city, setCity] = useState('');
@@ -94,12 +94,26 @@ function AppContextProvider({children}){
         try{
             setIsLoading(true);
             const url = `${baseUrl}/get-products`;
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                'Content-Type': 'application/json',
-                }
-            });
+            let response;
+            if(isLoggedIn){
+                response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body:JSON.stringify({
+                        user_id:userData.user._id
+                    })
+                });
+            }
+            else{
+                response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    }
+                });
+            }
 
             const data = await response.json();
             if(data.sucess){
@@ -151,7 +165,6 @@ function AppContextProvider({children}){
         isSellProduct, setIsSellProduct,
         cartData, setCartData,
         allProducts, setAllProducts, 
-        isAddedToCart, setIsAddedToCart, 
         menuItemsDetector, setMenuItemsDetector,
         fetchProducts,
         // location 

@@ -64,6 +64,7 @@ const Cart = () => {
 
   const updateQuantityIncrement = async (productId, index) => {
     try{
+      setIsLoading(true);
       const url = `${baseUrl}/product-count/increment`;
       const response = await fetch(url, {
         method: 'PUT',
@@ -91,6 +92,9 @@ const Cart = () => {
     }
     catch(err){
       toast.error(err.message);
+    }
+    finally{
+      setIsLoading(false);
     }
   };
 
@@ -140,6 +144,7 @@ const Cart = () => {
       return;
     }
     try{
+      setIsLoading(true);
       const url = `${baseUrl}/product-count/derement`;
       const response = await fetch(url, {
         method: 'PUT',
@@ -167,6 +172,9 @@ const Cart = () => {
     }
     catch(err){
       toast.error(err.message);
+    }
+    finally{
+      setIsLoading(false);
     }
   };
 
@@ -242,6 +250,7 @@ const Cart = () => {
 
   const deleteItem = async (productId) => {
     try{
+      setIsLoading(true);
       const url = `${baseUrl}/cart-item/delete`;
       const response = await fetch(url, {
         method: 'DELETE',
@@ -267,6 +276,9 @@ const Cart = () => {
     }
     catch(err){
       toast.error(err.message);
+    }
+    finally{
+      setIsLoading(false);
     }
   }
 
@@ -438,13 +450,6 @@ const Cart = () => {
             </div>
           </div>
         )}
-
-        {
-          isUserInfoActive &&
-          (
-            <div className={`w-full h-full absolute top-0 left-0 bg-black opacity-70 backdrop-blur`}></div>
-          )
-        }
       </div>
 
       <Footer/>

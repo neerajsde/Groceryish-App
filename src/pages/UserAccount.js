@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/search/SearchBar';
 
 const UserAccount = () => {
-    const {isUserInfoActive,isLoggedIn, isProfilePic, setProfilePic, updateProfilePic} = useContext(AppContext);
+    const {isLoggedIn, isProfilePic, setProfilePic, updateProfilePic} = useContext(AppContext);
     const [isDashboard, setIsDashboard] = useState(true);
     const [isUserInfo, setIsUserInfo] = useState(false);
     const [isFavoruites, setIsFavoruites] = useState(false);
@@ -111,13 +111,6 @@ const UserAccount = () => {
                             {isFavoruites && (<Favourites/>)}
                             {isSettings && (<Settings/>)}
                         </div>
-
-                        {
-                            isUserInfoActive &&
-                            (
-                                <div className={`w-full min-h-screen absolute top-0 left-0 bg-black opacity-70 backdrop-blur`}></div>
-                            )
-                        }
                     </div>
 
                     {isProfilePic && (<UpdateProfilePic/>)}

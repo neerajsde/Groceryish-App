@@ -15,8 +15,7 @@ const Location = () => {
                 (position) => {
                 const { latitude, longitude } = position.coords;
 
-                axios
-                    .get(
+                axios.get(
                     `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY}`
                     )
                     .then((response) => {
@@ -48,7 +47,7 @@ const Location = () => {
         <div className='pb-1'><FiMapPin className='text-2xl text-gray-500 max-sm:text-xl'/></div>
         {!error && 
         (
-            <div className={`flex flex-col ${!isLoggedIn && 'max-sm:flex-row max-sm:items-baseline max-sm:gap-2'}`}>
+            <div className={`flex flex-col ${!isLoggedIn && 'max-sm:flex-row max-sm:items-baseline max-sm:justify-between max-sm:gap-0'}`}>
                 <div className='text-base font-bold text-gray-600 max-sm:text-sm'>{city},</div>
                 <div className='text-xs font-semibold text-gray-400 max-sm:text-gray-500'>{area}</div>
             </div>
