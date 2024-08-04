@@ -57,7 +57,7 @@ const Navbar = () => {
                                 <div className='relative'>
                                     <LuShoppingCart className='text-3xl text-black max-lg:text-2xl' />
                                     {
-                                        isLoggedIn && cartItem !== 0 && (
+                                        cartItem !== 0 && (
                                             <div className='absolute top-[-8px] right-[-10px] w-[20px] h-[20px] border-2 border-white rounded-full bg-green-600 flex items-center justify-center'>
                                                 <div className='text-xs text-white font-semibold'>{cartItem}</div>
                                             </div>
@@ -101,14 +101,23 @@ const Navbar = () => {
 
                 {
                     isLoggedIn && (
-                        <div className='relative lg:hidden md:hidden' onClick={() => navigate('/cart')}>
-                            <LuShoppingCart className='text-2xl text-black'/>
+                        <div className='relative lg:hidden md:hidden' onClick={() => navigate('/wishlist')}>
+                            <FaRegHeart className='text-2xl text-black'/>
                             <div className='absolute top-[-8px] right-[-10px] w-[20px] h-[20px] border-2 border-white rounded-full bg-green-600 flex items-center justify-center'>
-                                <div className='text-xs text-white font-semibold'>{cartItem}</div>
+                                <div className='text-xs text-white font-semibold'>{wishlistLength}</div>
                             </div>
                         </div>
                     )
                 }
+
+                <div className='relative lg:hidden' onClick={() => navigate('/cart')}>
+                    <LuShoppingCart className='text-2xl text-black'/>
+                    { cartItem > 0 &&
+                        <div className='absolute top-[-8px] right-[-10px] w-[20px] h-[20px] border-2 border-white rounded-full bg-green-600 flex items-center justify-center'>
+                            <div className='text-xs text-white font-semibold'>{cartItem}</div>
+                        </div>
+                    }
+                </div>
 
                 {
                     isLoggedIn && (<div className='lg:hidden max-sm:hidden'><Location/></div>)
@@ -118,7 +127,7 @@ const Navbar = () => {
             {
                 isUserInfoActive && 
                 (
-                    <div className='absolute top-[65px] right-[10px] z-10'>
+                    <div className='absolute top-[65px] right-[10px] z-10 max-sm:top[70px]'>
                         <UserInfo/>
                     </div>
                 )

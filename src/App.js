@@ -10,6 +10,7 @@ import { AppContext } from './context/AppContext'
 import AddProduct from './components/product-info/AddProduct'
 import Wishlist from './pages/Wishlist'
 import BlackSpinner from './components/BlackSpinner'
+import AboutProduct from './pages/AboutProduct';
 
 const App = () => {
   const {isSellProduct, isLoading} = useContext(AppContext);
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/user-account' element={<UserAccount/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/wishlist' element={<Wishlist/>}/>
+        <Route path='/view-product/:id' element={<AboutProduct/>}/>
       </Routes>
 
       {

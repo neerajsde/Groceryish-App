@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { SlPaperPlane } from "react-icons/sl";
-import Spinner from '../Spinner';
+import Spinner from '../BlackSpinner';
 import { AppContext } from '../../context/AppContext';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import Featued_Products from './Featued_Products';
@@ -18,7 +18,7 @@ const homeBanners = [
 
 const HomeSection = () => {
   const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
-  const {allProducts, fetchProducts, isLoggedIn, userData} = useContext(AppContext);
+  const {allProducts, isLoggedIn, userData} = useContext(AppContext);
   const [currentBanner, setCurrentBanner] = useState(homeBanners[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userEmail, setUserEmail] = useState('');
@@ -78,10 +78,6 @@ const HomeSection = () => {
   function emailHandler(event){
     setUserEmail(event.target.value);
   }
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   useEffect(() => {
     setcategoryItems(allProducts);
@@ -291,8 +287,8 @@ const HomeSection = () => {
 
 
         { 
-          maxSixItems.length !== 0 &&
-          <div className='w-full flex flex-col items-center py-8 gap-8'>
+          maxSixItems.length !== 0 ? 
+          (<div className='w-full flex flex-col items-center py-8 gap-8'>
             <div className='w-full flex items-center justify-between px-8 max-md:px-4 max-md:flex-col max-md:gap-4'>
               <h2 className='text-3xl font-bold text-slate-600 max-lg:text-2xl max-md:text-xl'>Explore Categories</h2>
               <div className='flex items-center gap-6 max-md:flex-wrap max-md:gap-y-1 max-sm:gap-3 max-md:justify-between'>
@@ -335,7 +331,7 @@ const HomeSection = () => {
 
               <div className={`text-3xl bg-gray-200 py-4 px-2 max-md:text-xl cursor-pointer ${isVisiableRightArrow ? 'cursor-pointer text-black' : ' cursor-not-allowed text-white'}`} onClick={handleRightMoveItems}><FaChevronRight/></div>
             </div>
-          </div>
+          </div>) : (<div className='w-full h-[20vh] flex justify-center items-center text-lg font-semibold text-gray-400'>Loading...</div>)
         }
 
         <Featued_Products/>

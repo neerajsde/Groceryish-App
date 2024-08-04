@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,7 @@ function AppContextProvider({children}){
     const [updateProfilePic, setUpdateProfilePic] = useState('');
     const [isSellProduct, setIsSellProduct] = useState(false);
     const [cartData, setCartData] = useState([]);
+    const [cartProductIDs, setCartProductIDs] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
     
     const [menuItemsDetector, setMenuItemsDetector] = useState([true, false, false, false]);
@@ -54,7 +55,7 @@ function AppContextProvider({children}){
                     setUserData(data);
                     setCartItem(data.user.cart.length);
                     setWishlistLength(data.user.wishlist.length);
-                    navigate('/');
+                    navigate(-1);
                 }
                 else{
                     navigate('/login');
@@ -128,16 +129,34 @@ function AppContextProvider({children}){
         }
     }
 
+    useEffect(() => {
+        fetchProducts();
+    },[isLoggedIn]);
+
     const fetchUserCartTotalAmount = async () => {
         try{
-            const url = `${baseUrl}/get-selected-all-items`;
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body:JSON.stringify({user_id: userData.user._id})
-            });
+            let url;
+            let response;
+            if(isLoggedIn){
+                url = `${baseUrl}/get-selected-all-items`;
+                response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body:JSON.stringify({user_id: userData.user._id})
+                });
+            }
+            else{
+                url = `${baseUrl}/get-selected-all-items-without-login`;
+                response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body:JSON.stringify({products:cartProductIDs})
+                });
+            }
 
             const data = await response.json();
             if(data.success){
@@ -164,6 +183,7 @@ function AppContextProvider({children}){
         updateProfilePic, setUpdateProfilePic,
         isSellProduct, setIsSellProduct,
         cartData, setCartData,
+        cartProductIDs, setCartProductIDs,
         allProducts, setAllProducts, 
         menuItemsDetector, setMenuItemsDetector,
         fetchProducts,
