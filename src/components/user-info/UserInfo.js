@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoMdAddCircleOutline } from "react-icons/io";
 
 const UserInfo = () => {
-  const {setIsLoggedIn, setUserData, setIsUserInfoActive, setIsSellProduct} = useContext(AppContext);
+  const {setIsLoggedIn, setUserData, setIsUserInfoActive, setIsSellProduct, setCartData} = useContext(AppContext);
   const navigate = useNavigate();
   return (
     <div className='w-[300px] border border-black bg-[rgba(223,250,239,0.5)] backdrop-blur rounded-2xl flex justify-center items-center shadow-lg max-lg:mt-[3rem]'

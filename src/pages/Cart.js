@@ -63,6 +63,7 @@ const Cart = () => {
           },
           body: JSON.stringify({
             _id: userData.user._id,
+            addedProducts: cartProductIDs
           }),
         });
       } else {
