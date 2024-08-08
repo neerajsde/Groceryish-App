@@ -18,7 +18,7 @@ const homeBanners = [
 
 const HomeSection = () => {
   const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
-  const {allProducts, isLoggedIn, userData} = useContext(AppContext);
+  const {allProducts, isLoggedIn, userData, maxCategory} = useContext(AppContext);
   const [currentBanner, setCurrentBanner] = useState(homeBanners[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userEmail, setUserEmail] = useState('');
@@ -31,37 +31,12 @@ const HomeSection = () => {
   const [isVisiableLeftArrow, setIsVisiableLeftArrow] = useState(true);
   const [isVisiableRightArrow, setIsVisiableRightArrow] = useState(true);
   const [currentCategory, setCurrentCategory] = useState('All');
-
-  // Function to determine maxCategory based on width
-  const getMaxCategory = (width) => {
-    if (width < 425) {
-      return 1;
-    }else if (width > 425 && width < 500) {
-      return 2;
-    } else if (width < 768) {
-      return 3;
-    } else {
-      return 6;
-    }
-  };
-  const [width, setWidth] = useState(window.innerWidth);
-  const [maxCategory, setMaxCategory] = useState(getMaxCategory(window.outerWidth));
-
+  
   useEffect(() => {
-    const handleResize = () => {
-      const newWidth = window.outerWidth;
-      setWidth(newWidth);
-      setMaxCategory(getMaxCategory(newWidth));
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
+    setcategoryItems(allProducts);
+    categoryHandler('All');
+  },[]);
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBanner(prevBanner => {
@@ -78,11 +53,6 @@ const HomeSection = () => {
   function emailHandler(event){
     setUserEmail(event.target.value);
   }
-
-  useEffect(() => {
-    setcategoryItems(allProducts);
-    categoryHandler('All');
-  },[allProducts])
 
   function categoryHandler(category) {
     if (category === 'All') {
@@ -287,7 +257,7 @@ const HomeSection = () => {
 
 
         { 
-          maxSixItems.length !== 0 ? 
+          maxSixItems.length > 0 ? 
           (<div className='w-full flex flex-col items-center py-8 gap-8'>
             <div className='w-full flex items-center justify-between px-8 max-md:px-4 max-md:flex-col max-md:gap-4'>
               <h2 className='text-3xl font-bold text-slate-600 max-lg:text-2xl max-md:text-xl'>Explore Categories</h2>

@@ -107,7 +107,7 @@ const AboutProduct = () => {
     }
   }
 
-  const handleAddToWishList = async (productId) => {
+  const handleAddToWishList = async (productId, productName) => {
     if(!isLoggedIn){
         toast.error('Please Login');
         return;
@@ -122,7 +122,8 @@ const AboutProduct = () => {
             },
             body:JSON.stringify({
                 user_id: userData.user._id,
-                product_id: productId
+                product_id: productId,
+                name: productName
             })
         });
 
@@ -167,7 +168,7 @@ const AboutProduct = () => {
                   <div className='w-[200px] uppercase text-lg font-bold border px-3 py-2 flex items-center justify-center gap-2 bg-orange-500 border-orange-500 text-white cursor-pointer transition duration-200 hover:bg-orange-600'><BsLightningChargeFill/> Buy now</div>
                 </div>
 
-                <div className='w-[35px] h-[35px] rounded-full absolute top-2 right-2 shadow-lg flex justify-center items-center cursor-pointer' onClick={() => handleAddToWishList(productInfo._id)}>{isLike ? (<FcLike className='text-xl'/>) : (<FcLikePlaceholder className='text-xl'/>)}</div>
+                <div className='w-[35px] h-[35px] rounded-full absolute top-2 right-2 shadow flex justify-center items-center cursor-pointer' onClick={() => handleAddToWishList(productInfo._id, productInfo.name)}>{productInfo.isAddedToWishList || isLike ? (<FcLike className='text-xl'/>) : (<FcLikePlaceholder className='text-xl'/>)}</div>
               </div>
               <div className='w-full flex flex-col items-start gap-4 p-4'>
                 <h2 className='text-xl font-semibold capitalize'>{productInfo.title}</h2>

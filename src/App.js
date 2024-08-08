@@ -15,7 +15,7 @@ import AboutProduct from './pages/AboutProduct';
 const App = () => {
   const {isSellProduct, isLoading} = useContext(AppContext);
   return (
-    <div className='w-screen h-screen relative overflow-x-hidden'>
+    <div className='w-screen h-screen relative overflow-x-hidden scroll-smooth'>
       <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}/>

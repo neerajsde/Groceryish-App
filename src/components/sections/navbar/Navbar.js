@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../../context/AppContext'
 import { useNavigate } from 'react-router-dom';
 import { IoClose } from "react-icons/io5";
@@ -18,13 +18,13 @@ const Navbar = () => {
     const [showMenuItems, setMenuItems] = useState(false);
     
     return (
-        <nav className='w-full h-[80px] flex justify-between items-center pr-8 bg-white text-slate-600 border border-b-[1.5px] border-slate-200 max-lg:h-[70px] max-sm:h-[60px] max-md:pr-4'>
+        <nav className={`w-full h-[70px] flex justify-between items-center bg-white pr-4 text-slate-600 border border-b-[1.5px] border-slate-200 max-lg:h-[70px] max-sm:h-[60px] max-md:pr-4 sticky top-0 z-20`}>
             <Logo/>
             <div className='max-lg:hidden'><Location/></div>
             <div className='max-lg:hidden'><Search/></div>
 
-            <div className='flex items-center gap-6 max-sm:4'>
-                <div className={`flex items-center justify-between gap-6 ${showMenuItems ? 'max-md:absolute max-md:flex-col max-md:w-full max-md:h-full max-md:top-[70px] max-md:left-0 max-md:bg-[#1111] max-md:backdrop-blur max-md:z-20 max-md:justify-start max-sm:top-[60px]':'max-md:hidden'}`}>
+            <div className='flex items-center gap-6 max-sm:gap-3'>
+                <div className={`flex items-center justify-between gap-6 ${showMenuItems ? 'max-md:absolute max-md:flex-col max-md:w-full max-md:h-[100vh] max-md:top-[70px] max-md:left-0 max-md:bg-[#1111] max-md:backdrop-blur max-md:z-20 max-md:justify-start max-sm:top-[60px]':'max-md:hidden'}`}>
                     <div className='w-full lg:hidden md:hidden px-4 py-4 flex justify-between'>
                         <div className='text-xl text-red-700 font-bold'>Menu</div>
                         {
@@ -110,7 +110,7 @@ const Navbar = () => {
                     )
                 }
 
-                <div className='relative lg:hidden' onClick={() => navigate('/cart')}>
+                <div className='relative md:hidden' onClick={() => navigate('/cart')}>
                     <LuShoppingCart className='text-2xl text-black'/>
                     { cartItem > 0 &&
                         <div className='absolute top-[-8px] right-[-10px] w-[20px] h-[20px] border-2 border-white rounded-full bg-green-600 flex items-center justify-center'>

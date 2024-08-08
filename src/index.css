@@ -23,6 +23,17 @@ body{
    background: linear-gradient(129deg, #ffffff 0%, #ccffd6 50%, #54f7b0 100%);
 }
 
+.home-Features{
+   background: #92aecc;
+   background: -webkit-linear-gradient(152deg, #92aecc 0%, #58f19f 50%, #f19693 100%);
+   background: linear-gradient(152deg, #92aecc 0%, #58f19f 50%, #f19693 100%);
+}
+
+.shadow{
+   -webkit-box-shadow: 0 0 9.5px 3px #beebca;
+   -moz-box-shadow: 0 0 9.5px 3px #beebca;
+   box-shadow: 0 0 9.5px 3px #beebca;
+}
 
 .white-spinner{
    width: 26px;

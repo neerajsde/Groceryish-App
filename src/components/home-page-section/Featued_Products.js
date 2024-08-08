@@ -33,18 +33,18 @@ const Featued_Products = () => {
 
     const getClassNames = (product) => {
       if (currentCategory === product) {
-        return 'text-green-600 bold border-b-2 border-b-green-500';
+        return 'text-green-700 bold border-b-2 border-b-green-700';
       }
-      return 'text-gray-400 hover:text-black border-b-2 border-b-transparent';
+      return 'text-gray-500 hover:text-black border-b-2 border-b-transparent';
     };
 
   return (
-    <div className='w-full'>
+    <div className='w-full home-Features p-4'>
         {
           uniqueCategory.length > 1 && (
-            <div className='w-full flex flex-col items-center py-8 gap-8 max-md:gap-1'>
-              <div className='w-full flex items-center justify-between px-8 max-md:px-4 max-md:flex-col max-md:gap-4'>
-                  <h2 className='text-3xl font-bold text-slate-600 max-lg:text-2xl max-md:text-xl'>Featured Products</h2>
+            <div className='w-full flex flex-col items-center gap-4'>
+              <div className='w-full flex items-center justify-between px-4 py-4 rounded shadow-lg bg-[rgba(223,250,239,0.33)] backdrop-blur-md border border-gray-200 max-md:px-4 max-md:flex-col max-md:gap-4'>
+                  <h2 className='text-3xl font-bold text-slate-700 max-lg:text-2xl max-md:text-xl'>Featured Products</h2>
                   <div className='flex items-center gap-6 max-md:flex-wrap max-md:gap-y-1 max-sm:gap-3 max-md:justify-between'>
                     {
                       uniqueCategory.map((product, index) => {

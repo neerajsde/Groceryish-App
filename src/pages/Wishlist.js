@@ -57,7 +57,7 @@ const Wishlist = () => {
         { isLoggedIn ?
           wishlistLength > 0 ? 
           (
-            <div className='w-full flex justify-center bg-gray-300 p-4'><div className='w-[900px] max-lg:w-full'><WishListItems/></div></div>
+            <div className='w-full flex justify-center bg-gray-200 p-4'><div className='w-[900px] max-lg:w-full'><WishListItems/></div></div>
           ) : 
           (
             <div className='w-full h-[80vh] flex justify-evenly items-center max-sm:flex-col-reverse'>

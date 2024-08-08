@@ -7,7 +7,7 @@ const Products = ({visiable_products}) => {
     const {isLoading} = useContext(AppContext);
 
   return (
-    <div className='w-full flex justify-center items-center px-8 py-4 max-sm:px-4'>
+    <div className='w-full flex justify-center items-center'>
         {
             isLoading ? 
             (<BlackSpinner/>)

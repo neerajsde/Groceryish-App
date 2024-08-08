@@ -169,6 +169,36 @@ function AppContextProvider({children}){
         }
     }
 
+    // Function to determine maxCategory based on width
+  const getMaxCategory = (width) => {
+    if (width < 425) {
+      return 1;
+    }else if (width > 425 && width < 500) {
+      return 2;
+    } else if (width < 768) {
+      return 3;
+    } else {
+      return 6;
+    }
+  };
+  const [width, setWidth] = useState(window.innerWidth);
+  const [maxCategory, setMaxCategory] = useState(getMaxCategory(window.outerWidth));
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.outerWidth;
+      setWidth(newWidth);
+      setMaxCategory(getMaxCategory(newWidth));
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
     const value = {
         isLoggedIn, setIsLoggedIn,
         isLoading, setIsLoading,
@@ -196,7 +226,8 @@ function AppContextProvider({children}){
         cartTotalAmount, setCartTotalAmount, fetchUserCartTotalAmount,
         // wishlist
         wishlistLength, setWishlistLength,
-        wishlistItems, setWishlistItems
+        wishlistItems, setWishlistItems,
+        maxCategory, setMaxCategory
     }
 
     return (

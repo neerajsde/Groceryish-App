@@ -156,12 +156,12 @@ const AddProduct = () => {
     };
 
     return (
-        <div className='absolute top-0 left-0 w-full h-screen backdrop-blur-md flex justify-center items-center p-4 max-lg:h-auto'>
+        <div className='absolute top-0 left-0 w-full min-h-screen backdrop-blur-md flex justify-center items-start p-4 max-lg:h-auto z-20'>
             <div className='w-full bg-white flex flex-col rounded-lg p-4 shadow-gray-300 shadow-lg border border-gray-300 gap-4 max-lg:h-auto'>
                 <div className='w-full flex justify-between items-center'>
-                    <h2 className='text-2xl font-semibold login text-gray-500'>Sell Your Product</h2>
+                    <h2 className='text-2xl font-semibold login text-gray-500 max-sm:text-base'>Sell Your Product</h2>
                     <div
-                        className='w-[40px] h-[40px] bg-red-300 rounded-full flex justify-center items-center text-3xl text-slate-700 cursor-pointer hover:bg-red-400 transition duration-300 ease-linear'
+                        className='w-[40px] h-[40px] bg-red-300 rounded-full flex justify-center items-center text-3xl text-slate-700 cursor-pointer hover:bg-red-400 transition duration-300 ease-linear max-sm:w-[30px] max-sm:h-[30px] max-sm:text-xl'
                         onClick={() => setIsSellProduct(false)}>
                         <IoClose />
                     </div>
@@ -198,7 +198,7 @@ const AddProduct = () => {
                                             ref={fileInputRef}
                                             onChange={handleImageUpload}
                                         />
-                                        <div className='text-8xl text-gray-300'>
+                                        <div className='text-8xl text-gray-300 max-sm:text-5xl'>
                                             <MdAddPhotoAlternate />
                                         </div>
                                         <div className='text-base font-semibold text-gray-400 uppercase'>image</div>
@@ -207,7 +207,7 @@ const AddProduct = () => {
                                         className='w-full border border-gray-300 rounded-md flex flex-col justify-center items-center gap-4 py-4 cursor-pointer transition duration-200 ease-linear hover:bg-gray-100'
                                         onClick={openCamera}
                                     >
-                                        <div className='text-8xl text-gray-300'>
+                                        <div className='text-8xl text-gray-300 max-sm:text-5xl'>
                                             <MdAddAPhoto />
                                         </div>
                                         <div className='text-base font-semibold text-gray-400 uppercase'>camera</div>
@@ -221,7 +221,7 @@ const AddProduct = () => {
 
                     <div className='w-[66%] flex flex-col gap-4 py-3 max-md:w-full'>
                         <div className='w-full text-center text-2xl font-semibold'>Product Details</div>
-                        <div className='w-full flex justify-between gap-2 px-4 max-lg:flex-col'>
+                        <div className='w-full flex justify-between gap-2 px-4 max-lg:flex-col max-sm:px-2'>
                             <div className='w-full flex flex-col justify-between gap-4'>
                                 <label className='w-full flex justify-between items-center max-sm:flex-col max-sm:items-start'>
                                     <p className='text-lg'>Category:</p>
@@ -275,7 +275,7 @@ const AddProduct = () => {
                                 </label>
                             </div>
 
-                            <div className='w-full px-2 flex flex-col gap-4'>
+                            <div className='w-full px-2 flex flex-col gap-4 max-sm:px-0'>
                                 <label className='w-full flex flex-col justify-between max-sm:flex-col max-sm:items-start'>
                                     <p>Product title:</p>
                                     <input
@@ -334,7 +334,7 @@ const AddProduct = () => {
                                     </div>
                                 </label>
 
-                                <div className='w-full flex justify-start items-center gap-2 max-sm:justify-center' onClick={() => setIsActiveAddtoCartBtn(!isActiveAddtoCartBtn)}>
+                                <div className='w-full flex justify-start items-center gap-2' onClick={() => setIsActiveAddtoCartBtn(!isActiveAddtoCartBtn)}>
                                     <div
                                         name='add_to_cart'
                                         id='add_to_cart'
@@ -343,7 +343,7 @@ const AddProduct = () => {
                                     <label htmlFor='add_to_cart' className='text-lg'>Add to cart</label>
                                 </div>
 
-                                <div className='w-full flex justify-start items-center gap-2 max-sm:justify-center' onClick={() => setIsActiveSendMail(!isActiveSendMail)}>
+                                <div className='w-full flex justify-start items-center gap-2' onClick={() => setIsActiveSendMail(!isActiveSendMail)}>
                                     <div
                                         name='send_mail'
                                         id='send_mail'

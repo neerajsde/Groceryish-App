@@ -12,7 +12,7 @@ const Header = () => {
     const {menuItemsDetector, setMenuItemsDetector} = useContext(AppContext);
 
   return (
-        <div className='w-full h-[60px] flex justify-between items-center px-10 bg-white max-lg:px-4 max-sm:h-[43px] max-lg:bg-green-100'>
+        <div className='w-full h-[50px] flex justify-between items-center px-10 bg-white max-lg:px-4 max-sm:h-[43px] max-lg:bg-green-100'>
             <div className='bg-green-600 flex justify-center items-center px-3 py-2 gap-2 max-lg:hidden'>
                 <div className='w-[22px] h-[22px] grid grid-rows-2 grid-cols-2 justify-start items-center'>
                     <div className='w-[9px] h-[9px] border-[1.6px] border-white'></div>

@@ -292,7 +292,7 @@ const Cart = () => {
     <div className="w-full flex flex-col items-center">
       <Navbar />
 
-      <div className="w-full flex justify-between p-4 bg-gray-300 gap-4 max-lg:flex-col-reverse">
+      <div className="w-full flex justify-between p-4 bg-gray-200 gap-4 max-lg:flex-col-reverse">
         <div className="w-full bg-white flex flex-col p-4">
           <div className="w-full flex flex-col gap-0">
             <h2 className="text-3xl font-medium max-sm:text-xl">
@@ -356,7 +356,7 @@ const Cart = () => {
                       <img
                         src={item.img}
                         alt={item.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </Link>
                   </div>
@@ -487,7 +487,7 @@ const Cart = () => {
                       <div className="text-lg font-medium text-black">
                         Discount
                       </div>
-                      <div className="text-md font-medium text-green-500">{`-₹${Math.abs(
+                      <div className="text-md font-medium text-green-500 flex items-center gap-1"><span className="text-black text-2xl">-</span>{`₹${Math.abs(
                         cartTotalAmount.discountAmount
                       )}`}</div>
                     </div>

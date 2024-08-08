@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { Link, useNavigate } from "react-router-dom";
-import { BiCartAdd } from "react-icons/bi";
+import { BsFillLightningChargeFill } from "react-icons/bs";
+import { FaCartPlus } from "react-icons/fa6";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
 import Spinner from "../Spinner";
@@ -23,20 +24,24 @@ const Item = ({ data }) => {
   const [isLike, setIsLike] = useState(false);
   const [isCartItem, setIsCartItem] = useState(false);
 
-  const handleAddToCart = async (product_id) => {
+  const handleAddToCart = async (product_id, productName) => {
     if (!isLoggedIn) {
-      // Add item to cart Data
       setCartProductIDs((prevData) => {
-        let oldData = [...prevData];
-        oldData.push({ productId: product_id, count: 1, isSelected: false });
-        return oldData;
+        // Convert array of objects to a Set of strings (JSON)
+        let oldData = new Set(prevData.map(item => JSON.stringify(item)));
+        
+        // Add new item as JSON string
+        oldData.add(JSON.stringify({ productId: product_id, count: 1, isSelected: false }));
+        
+        // Convert back to an array of objects
+        return [...oldData].map(item => JSON.parse(item));
       });
-
+    
       setCartItem((prevLength) => prevLength + 1);
       setIsCartItem(true);
-      toast.success("Item added to cart");
+      toast.success(`${productName} added to cart`);
       return;
-    }
+    }    
 
     try {
       setIsLoading(true);
@@ -54,7 +59,7 @@ const Item = ({ data }) => {
 
       const data = await response.json();
       if (data.sucess) {
-        toast.success(data.message);
+        toast.success(`${productName} added to cart`);
         setCartItem(data.user.cart.length);
         setIsCartItem(true);
       } else {
@@ -67,7 +72,7 @@ const Item = ({ data }) => {
     }
   };
 
-  const handleAddToWishList = async (productId) => {
+  const handleAddToWishList = async (productId, productName) => {
     if (!isLoggedIn) {
       toast.error("Please Login");
       return;
@@ -83,6 +88,7 @@ const Item = ({ data }) => {
         body: JSON.stringify({
           user_id: userData.user._id,
           product_id: productId,
+          name:productName
         }),
       });
 
@@ -104,8 +110,8 @@ const Item = ({ data }) => {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center gap-4 p-2 bg-white transition-all duration-300 hover:scale-105 border border-slate-500 rounded-md hover:shadow-2xl max-lg:gap-0">
-      <div className="w-full flex justify-between items-center relative">
+    <div className="w-full flex flex-col justify-center items-center gap-4 p-2 py-4 bg-white transition-all duration-300 hover:scale-105 border border-slate-500 rounded-md hover:shadow-md max-lg:gap-0">
+      <div className="w-full flex justify-between items-center relative max-sm:pb-2">
         <div className="flex flex-col pl-4 max-sm:pl-1">
           <div className="text-sm font-semibold text-gray-400 max-md:text-xs">
             {data.category}
@@ -147,8 +153,8 @@ const Item = ({ data }) => {
           <img src={data.img} className="w-full max-h-full" alt={data.title} />
         </Link>
         <div
-          className="absolute top-1 right-1 text-3xl w-[40px] h-[40px] rounded-full bg-[#6666] flex items-center justify-center cursor-pointer"
-          onClick={() => handleAddToWishList(data._id)}
+          className="absolute top-1 right-1 text-3xl w-[40px] h-[40px] rounded-full shadow bg-[#fbfafa44] backdrop-blur-md flex items-center justify-center cursor-pointer"
+          onClick={() => handleAddToWishList(data._id, data.name)}
         >
           {data.isInWishlist || isLike ? <FcLike /> : <FcLikePlaceholder />}
         </div>
@@ -157,27 +163,27 @@ const Item = ({ data }) => {
         {data.isAddedToCart || isCartItem ? (
           <button
             className="w-[170px] flex justify-evenly items-center border-2 border-slate-600 text-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-white transition duration-200 hover:bg-slate-600 hover:text-white max-lg:w-full"
-            onClick={() => navigate("/cart")}
+            onClick={() => navigate(`/cart`)}
           >
             Go to cart
           </button>
         ) : (
           <button
             className="w-[170px] flex justify-evenly items-center border-2 border-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-slate-500 text-white transition duration-200 hover:bg-slate-600 hover:text-white max-lg:w-full"
-            onClick={() => handleAddToCart(data._id)}
+            onClick={() => handleAddToCart(data._id, data.name)}
           >
-            Add to cart{" "}
             {isLoading ? (
               <Spinner />
             ) : (
               <div className="text-xl">
-                <BiCartAdd />
+                <FaCartPlus />
               </div>
             )}
+            Add to cart
           </button>
         )}
-        <button className="w-[150px] border-2 border-orange-600 py-1 rounded-md uppercase text-md font-semibold bg-orange-500 text-white transition duration-200 hover:bg-orange-600 max-lg:w-full">
-          Buy Now
+        <button className="w-[150px] flex justify-center items-center gap-2 border-2 border-orange-600 py-1 rounded-md uppercase text-md font-semibold bg-orange-500 text-white transition duration-200 hover:bg-orange-600 max-lg:w-full">
+          <BsFillLightningChargeFill/> Buy Now
         </button>
       </div>
     </div>

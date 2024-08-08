@@ -4,6 +4,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaStar } from "react-icons/fa";
 import toast from 'react-hot-toast';
 import Spinner from '../Spinner';
+import { Link } from 'react-router-dom';
 
 const WishListItems = () => {
     const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:5050/api/v1';
@@ -55,9 +56,9 @@ const WishListItems = () => {
                 wishlistItems.map((item, index) => (
                     <div key={index} className='w-full flex items-center py-4 px-6 border-b border-gray-300 gap-6 max-sm:flex-col max-sm:gap-2 max-sm:px-2'>
                         <h2 className='text-base font-medium capitalize sm:hidden text-gray-500'>{item.title}</h2>
-                        <div className='w-[150px] max-sm:w-[120px]'>
+                        <Link className='w-[150px] max-sm:w-[120px]' to={`/view-product/${item._id}`}>
                             <img src={item.img} alt={item.name} className='w-full h-full object-cover' />
-                        </div>
+                        </Link>
                         <div className='w-full flex justify-between gap-4 max-sm:items-center max-sm:gap-0'>
                             <div className='w-full flex flex-col gap-1'>
                                 <h2 className='text-md font-medium capitalize text-gray-500 max-sm:hidden'>{item.title}</h2>
