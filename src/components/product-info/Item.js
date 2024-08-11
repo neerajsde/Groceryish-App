@@ -126,7 +126,7 @@ const Item = ({ data }) => {
           <div className="w-full flex items-center gap-3">
             {data.avg_rating > 0 && (
               <div className="w-[50px] flex items-center gap-1 px-2 py-[2px] border text-xs text-white bg-green-600 rounded">
-                <p className="font-semibold">{data.avg_rating}</p>
+                <p className="font-semibold">{data.avg_rating.toFixed(1)}</p>
                 <FaStar />
               </div>
             )}
@@ -153,7 +153,7 @@ const Item = ({ data }) => {
           <img src={data.img} className="w-full max-h-full" alt={data.title} />
         </Link>
         <div
-          className="absolute top-1 right-1 text-3xl w-[40px] h-[40px] rounded-full shadow bg-[#fbfafa44] backdrop-blur-md flex items-center justify-center cursor-pointer"
+          className="absolute top-1 right-1 text-3xl w-[40px] h-[40px] rounded-full shadow-md bg-[#fbfafa44] backdrop-blur-md flex items-center justify-center cursor-pointer"
           onClick={() => handleAddToWishList(data._id, data.name)}
         >
           {data.isInWishlist || isLike ? <FcLike /> : <FcLikePlaceholder />}
@@ -169,7 +169,7 @@ const Item = ({ data }) => {
           </button>
         ) : (
           <button
-            className="w-[170px] flex justify-evenly items-center border-2 border-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-slate-500 text-white transition duration-200 hover:bg-slate-600 hover:text-white max-lg:w-full"
+            className="w-[170px] flex justify-center items-center gap-2 border-2 border-slate-600 py-1 rounded-md uppercase text-md font-semibold bg-slate-500 text-white transition duration-200 hover:bg-slate-600 hover:text-white max-lg:w-full"
             onClick={() => handleAddToCart(data._id, data.name)}
           >
             {isLoading ? (

@@ -156,7 +156,7 @@ const AddProduct = () => {
     };
 
     return (
-        <div className='absolute top-0 left-0 w-full min-h-screen backdrop-blur-md flex justify-center items-start p-4 max-lg:h-auto z-20'>
+        <div className='absolute top-0 left-0 w-full min-h-screen backdrop-blur-md flex justify-center items-start p-4 max-lg:h-auto z-40'>
             <div className='w-full bg-white flex flex-col rounded-lg p-4 shadow-gray-300 shadow-lg border border-gray-300 gap-4 max-lg:h-auto'>
                 <div className='w-full flex justify-between items-center'>
                     <h2 className='text-2xl font-semibold login text-gray-500 max-sm:text-base'>Sell Your Product</h2>

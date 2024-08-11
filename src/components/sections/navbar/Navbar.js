@@ -18,7 +18,7 @@ const Navbar = () => {
     const [showMenuItems, setMenuItems] = useState(false);
     
     return (
-        <nav className={`w-full h-[70px] flex justify-between items-center bg-white pr-4 text-slate-600 border border-b-[1.5px] border-slate-200 max-lg:h-[70px] max-sm:h-[60px] max-md:pr-4 sticky top-0 z-20`}>
+        <nav className={`w-full h-[70px] flex justify-between items-center bg-white pr-4 text-slate-600 border border-b-[1.5px] border-slate-200 max-lg:h-[70px] max-sm:h-[60px] max-md:pr-4 sticky top-0 z-30`}>
             <Logo/>
             <div className='max-lg:hidden'><Location/></div>
             <div className='max-lg:hidden'><Search/></div>

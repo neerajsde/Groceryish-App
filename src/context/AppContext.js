@@ -35,6 +35,10 @@ function AppContextProvider({children}){
     // I want to show My additional info
     const [isAddInfo, setIsAddInfo] = useState(true);
 
+    // rating window 
+    const [isOpenRate, setIsOpenRate] = useState(false);
+    const [nowUpdate, setNowUpadate] = useState(false);
+
     const fetch_data = async (url, sendData) => {
         try{
             setIsLoading(true);
@@ -227,7 +231,8 @@ function AppContextProvider({children}){
         // wishlist
         wishlistLength, setWishlistLength,
         wishlistItems, setWishlistItems,
-        maxCategory, setMaxCategory
+        maxCategory, setMaxCategory,
+        isOpenRate, setIsOpenRate, nowUpdate, setNowUpadate
     }
 
     return (

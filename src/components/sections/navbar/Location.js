@@ -50,7 +50,7 @@ const Location = () => {
     <div>
         {
             !isLoading ?  (
-                <div className={`flex items-end gap-1 ${!isLoggedIn && 'max-sm:w-[90vw] max-sm:items-center'}`}>
+                <div className={`max-w-[180px] flex items-end gap-1 ${!isLoggedIn && 'max-sm:w-[90vw] max-sm:items-center'}`}>
                     <div className='pb-1'><FiMapPin className='text-2xl text-gray-500 max-sm:text-xl'/></div>
                     {!error && 
                     (

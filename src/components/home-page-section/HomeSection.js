@@ -33,11 +33,6 @@ const HomeSection = () => {
   const [currentCategory, setCurrentCategory] = useState('All');
   
   useEffect(() => {
-    setcategoryItems(allProducts);
-    categoryHandler('All');
-  },[]);
-  
-  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBanner(prevBanner => {
         const currentIndex = homeBanners.indexOf(prevBanner);
@@ -54,10 +49,23 @@ const HomeSection = () => {
     setUserEmail(event.target.value);
   }
 
+  useEffect(() => {
+    if (allProducts.length > 0) {
+      setcategoryItems(allProducts);
+    }
+  }, [allProducts]);
+  
+  useEffect(() => {
+    if (categoryItems.length > 0) {
+      categoryHandler('All');
+    }
+  }, [categoryItems]);
+  
   function categoryHandler(category) {
     if (category === 'All') {
       setVisiableItems(categoryItems);
-      setMaxSixItems(categoryItems.length > maxCategory ? categoryItems.slice(0, maxCategory) : categoryItems);
+      const maxItems = categoryItems.length > maxCategory ? categoryItems.slice(0, maxCategory) : categoryItems;
+      setMaxSixItems(maxItems);
       setIsVisiableLeftArrow(false);
       setIsVisiableRightArrow(categoryItems.length > maxCategory);
       setColorsArray(shuffleArray([...colorsArray]));
@@ -66,14 +74,14 @@ const HomeSection = () => {
     }
   
     const filterItems = categoryItems.filter(product => product.category === category);
+    const maxItems = filterItems.slice(0, maxCategory);
     setVisiableItems(filterItems);
-    setMaxSixItems(filterItems.slice(0, maxCategory));
+    setMaxSixItems(maxItems);
     handleArrowBtn();
     setColorsArray(shuffleArray([...colorsArray]));
     setCurrentCategory(category);
-  }
+  } 
   
-
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
